@@ -1,0 +1,756 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0582A6E695D6E4F037107D68AF1FC81F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		0A97C9760934FAB95E9E94CDDC587992 /* Pods-HootMessenger-HootMessengerUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9AA1A4A1D67FE66D2B2C2D919AF774 /* Pods-HootMessenger-HootMessengerUITests-dummy.m */; };
+		135715648A93401AA282D815681450B3 /* Pods-HootMessenger-HootMessengerUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9B6227476EACF6B33EC270DEA01439 /* Pods-HootMessenger-HootMessengerUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E5D2577EBCF3D1C653ED52B64532006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		443C99FC0427334CD05E2FC034D1ADC2 /* Pods-HootMessengerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 200192D22C8D86913597414FEA3E820E /* Pods-HootMessengerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B0775A479CE477F149E6ECF3B411FCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		BADCB2F1501AB9B63209FA9142983203 /* Pods-HootMessenger-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F67C321678AA401464D9DCFE9D7F4B5 /* Pods-HootMessenger-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F067B66DDCEA517091A7EC147E6BDF8B /* Pods-HootMessenger-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 405B4B43E3CA072E4D5781DC7CE1BA71 /* Pods-HootMessenger-dummy.m */; };
+		F23AF5E68AC9C115B9C5174F9C3A66BE /* Pods-HootMessengerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC018DF6358BB6B3B5AF79BC237384D /* Pods-HootMessengerTests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4BA35CFE3AF2F552FB2D6892F2798F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6740BDFC23F365B995182F990C7E813;
+			remoteInfo = "Pods-HootMessenger";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03E915A1ACAFB795C00945C0095C54BE /* Pods-HootMessenger-HootMessengerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HootMessenger-HootMessengerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		200192D22C8D86913597414FEA3E820E /* Pods-HootMessengerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HootMessengerTests-umbrella.h"; sourceTree = "<group>"; };
+		2BC018DF6358BB6B3B5AF79BC237384D /* Pods-HootMessengerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HootMessengerTests-dummy.m"; sourceTree = "<group>"; };
+		3F67C321678AA401464D9DCFE9D7F4B5 /* Pods-HootMessenger-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HootMessenger-umbrella.h"; sourceTree = "<group>"; };
+		4059D8BBEF24788D32ED32C32680E3A5 /* Pods-HootMessengerTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HootMessengerTests"; path = Pods_HootMessengerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		405B4B43E3CA072E4D5781DC7CE1BA71 /* Pods-HootMessenger-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HootMessenger-dummy.m"; sourceTree = "<group>"; };
+		52217134838FEEBCCB240451E5FBD8E5 /* Pods-HootMessengerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HootMessengerTests.release.xcconfig"; sourceTree = "<group>"; };
+		534713011F0F0CCA425E0042A10B4BA0 /* Pods-HootMessengerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HootMessengerTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5772A102E0663840EDF2E06D69125C90 /* Pods-HootMessenger-HootMessengerUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HootMessenger-HootMessengerUITests"; path = Pods_HootMessenger_HootMessengerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58E045087854E572D6FBA2FB3559F82E /* Pods-HootMessenger.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HootMessenger.modulemap"; sourceTree = "<group>"; };
+		66343B5898FE67B6A667D49F1B178387 /* Pods-HootMessenger-HootMessengerUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HootMessenger-HootMessengerUITests.modulemap"; sourceTree = "<group>"; };
+		6C9B6227476EACF6B33EC270DEA01439 /* Pods-HootMessenger-HootMessengerUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HootMessenger-HootMessengerUITests-umbrella.h"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7AF9606DAACC956AA130A5FF5D74D5F7 /* Pods-HootMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HootMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		7C5EDFCD70BA5E1C69B8F073CE840669 /* Pods-HootMessengerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HootMessengerTests-Info.plist"; sourceTree = "<group>"; };
+		89DF83EEA31C5DC841B93139BA65FFC6 /* Pods-HootMessenger-HootMessengerUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HootMessenger-HootMessengerUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		904C4E162C5C5DB8308D9259BDD267FD /* Pods-HootMessenger-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HootMessenger-acknowledgements.plist"; sourceTree = "<group>"; };
+		94E7D933B03FD830F232BAF4F32BCF89 /* Pods-HootMessenger-HootMessengerUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HootMessenger-HootMessengerUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E357893CF2E3D8E896F1E4D4949E17E /* Pods-HootMessengerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HootMessengerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA8BB49967E1F7332E9CA4F243C14A39 /* Pods-HootMessenger-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HootMessenger-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C7C34A26F9015064A3283F20FC425F6E /* Pods-HootMessenger-HootMessengerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HootMessenger-HootMessengerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CA9AA1A4A1D67FE66D2B2C2D919AF774 /* Pods-HootMessenger-HootMessengerUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HootMessenger-HootMessengerUITests-dummy.m"; sourceTree = "<group>"; };
+		CC808A25BADCBEC098B80671023BC5EF /* Pods-HootMessenger-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HootMessenger-Info.plist"; sourceTree = "<group>"; };
+		E2E2E571F5DFBB3A5E2F459E9659913F /* Pods-HootMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HootMessenger.release.xcconfig"; sourceTree = "<group>"; };
+		E454A16C81B215C7C5AB9595F9DEDC8B /* Pods-HootMessenger */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HootMessenger"; path = Pods_HootMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8359080EB5EC80D0670913568DE6E8A /* Pods-HootMessenger-HootMessengerUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HootMessenger-HootMessengerUITests-Info.plist"; sourceTree = "<group>"; };
+		F9F7DF94A8099FB6C610CA3B917EE1B2 /* Pods-HootMessengerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HootMessengerTests.modulemap"; sourceTree = "<group>"; };
+		FF40DBDC405DFB192369D448A8B9D92F /* Pods-HootMessengerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HootMessengerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FBA18A735FC04CF35F349BB56E957E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B0775A479CE477F149E6ECF3B411FCB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D704527CB55610AD7D8DE69066822CE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0582A6E695D6E4F037107D68AF1FC81F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7A2DA4A76C50C78E70BF1C7EC6F6E39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E5D2577EBCF3D1C653ED52B64532006 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16375B206002577FD198E0E84F159915 /* Pods-HootMessenger */ = {
+			isa = PBXGroup;
+			children = (
+				58E045087854E572D6FBA2FB3559F82E /* Pods-HootMessenger.modulemap */,
+				AA8BB49967E1F7332E9CA4F243C14A39 /* Pods-HootMessenger-acknowledgements.markdown */,
+				904C4E162C5C5DB8308D9259BDD267FD /* Pods-HootMessenger-acknowledgements.plist */,
+				405B4B43E3CA072E4D5781DC7CE1BA71 /* Pods-HootMessenger-dummy.m */,
+				CC808A25BADCBEC098B80671023BC5EF /* Pods-HootMessenger-Info.plist */,
+				3F67C321678AA401464D9DCFE9D7F4B5 /* Pods-HootMessenger-umbrella.h */,
+				7AF9606DAACC956AA130A5FF5D74D5F7 /* Pods-HootMessenger.debug.xcconfig */,
+				E2E2E571F5DFBB3A5E2F459E9659913F /* Pods-HootMessenger.release.xcconfig */,
+			);
+			name = "Pods-HootMessenger";
+			path = "Target Support Files/Pods-HootMessenger";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		652547D3F4ACEFC5AA89FE64CD421E8E /* Pods-HootMessengerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F9F7DF94A8099FB6C610CA3B917EE1B2 /* Pods-HootMessengerTests.modulemap */,
+				FF40DBDC405DFB192369D448A8B9D92F /* Pods-HootMessengerTests-acknowledgements.markdown */,
+				534713011F0F0CCA425E0042A10B4BA0 /* Pods-HootMessengerTests-acknowledgements.plist */,
+				2BC018DF6358BB6B3B5AF79BC237384D /* Pods-HootMessengerTests-dummy.m */,
+				7C5EDFCD70BA5E1C69B8F073CE840669 /* Pods-HootMessengerTests-Info.plist */,
+				200192D22C8D86913597414FEA3E820E /* Pods-HootMessengerTests-umbrella.h */,
+				9E357893CF2E3D8E896F1E4D4949E17E /* Pods-HootMessengerTests.debug.xcconfig */,
+				52217134838FEEBCCB240451E5FBD8E5 /* Pods-HootMessengerTests.release.xcconfig */,
+			);
+			name = "Pods-HootMessengerTests";
+			path = "Target Support Files/Pods-HootMessengerTests";
+			sourceTree = "<group>";
+		};
+		673A976D166FC5B46E460AE849CCF5BE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				16375B206002577FD198E0E84F159915 /* Pods-HootMessenger */,
+				91A6E37125FE906423100138F4743CCA /* Pods-HootMessenger-HootMessengerUITests */,
+				652547D3F4ACEFC5AA89FE64CD421E8E /* Pods-HootMessengerTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		91A6E37125FE906423100138F4743CCA /* Pods-HootMessenger-HootMessengerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				66343B5898FE67B6A667D49F1B178387 /* Pods-HootMessenger-HootMessengerUITests.modulemap */,
+				94E7D933B03FD830F232BAF4F32BCF89 /* Pods-HootMessenger-HootMessengerUITests-acknowledgements.markdown */,
+				89DF83EEA31C5DC841B93139BA65FFC6 /* Pods-HootMessenger-HootMessengerUITests-acknowledgements.plist */,
+				CA9AA1A4A1D67FE66D2B2C2D919AF774 /* Pods-HootMessenger-HootMessengerUITests-dummy.m */,
+				E8359080EB5EC80D0670913568DE6E8A /* Pods-HootMessenger-HootMessengerUITests-Info.plist */,
+				6C9B6227476EACF6B33EC270DEA01439 /* Pods-HootMessenger-HootMessengerUITests-umbrella.h */,
+				03E915A1ACAFB795C00945C0095C54BE /* Pods-HootMessenger-HootMessengerUITests.debug.xcconfig */,
+				C7C34A26F9015064A3283F20FC425F6E /* Pods-HootMessenger-HootMessengerUITests.release.xcconfig */,
+			);
+			name = "Pods-HootMessenger-HootMessengerUITests";
+			path = "Target Support Files/Pods-HootMessenger-HootMessengerUITests";
+			sourceTree = "<group>";
+		};
+		BB0903C7EF002480919BF47CD2AC7270 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E454A16C81B215C7C5AB9595F9DEDC8B /* Pods-HootMessenger */,
+				5772A102E0663840EDF2E06D69125C90 /* Pods-HootMessenger-HootMessengerUITests */,
+				4059D8BBEF24788D32ED32C32680E3A5 /* Pods-HootMessengerTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				BB0903C7EF002480919BF47CD2AC7270 /* Products */,
+				673A976D166FC5B46E460AE849CCF5BE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		28803422B2EE22F561D0A842DC49A873 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				135715648A93401AA282D815681450B3 /* Pods-HootMessenger-HootMessengerUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D36605BE6314AD7D8CE7DC1A19EFC8D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BADCB2F1501AB9B63209FA9142983203 /* Pods-HootMessenger-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B539DCFD9E3E284901947D0ABE8F0044 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				443C99FC0427334CD05E2FC034D1ADC2 /* Pods-HootMessengerTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A6740BDFC23F365B995182F990C7E813 /* Pods-HootMessenger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B06151D511312094135C8CD3756EEA70 /* Build configuration list for PBXNativeTarget "Pods-HootMessenger" */;
+			buildPhases = (
+				6D36605BE6314AD7D8CE7DC1A19EFC8D /* Headers */,
+				86817A258F125E6E9F0DF8703DB4D043 /* Sources */,
+				4FBA18A735FC04CF35F349BB56E957E7 /* Frameworks */,
+				DFCA17D2187810E5CBCC074F73902018 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-HootMessenger";
+			productName = Pods_HootMessenger;
+			productReference = E454A16C81B215C7C5AB9595F9DEDC8B /* Pods-HootMessenger */;
+			productType = "com.apple.product-type.framework";
+		};
+		ADED7C89C74C8F306367278C4B0CA423 /* Pods-HootMessenger-HootMessengerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 143ABFF6159F78EAC303D7B7AC6D1BEF /* Build configuration list for PBXNativeTarget "Pods-HootMessenger-HootMessengerUITests" */;
+			buildPhases = (
+				28803422B2EE22F561D0A842DC49A873 /* Headers */,
+				07D98EE586A568BA4B0506BD93A06BD8 /* Sources */,
+				D704527CB55610AD7D8DE69066822CE8 /* Frameworks */,
+				5454E7B1E964C7731192F8D63572180F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-HootMessenger-HootMessengerUITests";
+			productName = Pods_HootMessenger_HootMessengerUITests;
+			productReference = 5772A102E0663840EDF2E06D69125C90 /* Pods-HootMessenger-HootMessengerUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+		DFB4A5C7FBE167C4BFDF6ED2150C4D1F /* Pods-HootMessengerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42CF7F2945AAE96EEBDD7469F66ECA8D /* Build configuration list for PBXNativeTarget "Pods-HootMessengerTests" */;
+			buildPhases = (
+				B539DCFD9E3E284901947D0ABE8F0044 /* Headers */,
+				4F4E287E815A9E208CEB1CA996A00199 /* Sources */,
+				F7A2DA4A76C50C78E70BF1C7EC6F6E39 /* Frameworks */,
+				2B2042B67EEC175A4961EF9761E6F684 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				743F31110E32944493CA8086C5501B33 /* PBXTargetDependency */,
+			);
+			name = "Pods-HootMessengerTests";
+			productName = Pods_HootMessengerTests;
+			productReference = 4059D8BBEF24788D32ED32C32680E3A5 /* Pods-HootMessengerTests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			minimizedProjectReferenceProxies = 0;
+			productRefGroup = BB0903C7EF002480919BF47CD2AC7270 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6740BDFC23F365B995182F990C7E813 /* Pods-HootMessenger */,
+				ADED7C89C74C8F306367278C4B0CA423 /* Pods-HootMessenger-HootMessengerUITests */,
+				DFB4A5C7FBE167C4BFDF6ED2150C4D1F /* Pods-HootMessengerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B2042B67EEC175A4961EF9761E6F684 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5454E7B1E964C7731192F8D63572180F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFCA17D2187810E5CBCC074F73902018 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07D98EE586A568BA4B0506BD93A06BD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A97C9760934FAB95E9E94CDDC587992 /* Pods-HootMessenger-HootMessengerUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F4E287E815A9E208CEB1CA996A00199 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F23AF5E68AC9C115B9C5174F9C3A66BE /* Pods-HootMessengerTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86817A258F125E6E9F0DF8703DB4D043 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F067B66DDCEA517091A7EC147E6BDF8B /* Pods-HootMessenger-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		743F31110E32944493CA8086C5501B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-HootMessenger";
+			target = A6740BDFC23F365B995182F990C7E813 /* Pods-HootMessenger */;
+			targetProxy = D4BA35CFE3AF2F552FB2D6892F2798F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A18F5A958A8AD6B165B28C95CCAA6E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E357893CF2E3D8E896F1E4D4949E17E /* Pods-HootMessengerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HootMessengerTests/Pods-HootMessengerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HootMessengerTests/Pods-HootMessengerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		119D25BC8590F02A997CE3B28DA2EFA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		1D8D3DA97CE07551333921132991778E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03E915A1ACAFB795C00945C0095C54BE /* Pods-HootMessenger-HootMessengerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HootMessenger-HootMessengerUITests/Pods-HootMessenger-HootMessengerUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HootMessenger-HootMessengerUITests/Pods-HootMessenger-HootMessengerUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3598A876B995E5C231F57B7F63A0952C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2E2E571F5DFBB3A5E2F459E9659913F /* Pods-HootMessenger.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HootMessenger/Pods-HootMessenger-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HootMessenger/Pods-HootMessenger.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		365887CB06562A44C26802B35DA8FD92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7C34A26F9015064A3283F20FC425F6E /* Pods-HootMessenger-HootMessengerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HootMessenger-HootMessengerUITests/Pods-HootMessenger-HootMessengerUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HootMessenger-HootMessengerUITests/Pods-HootMessenger-HootMessengerUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6F4225877C794ABEB78776F47754104E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		8CDB5847B76DED511A2F7551EE4EBF58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52217134838FEEBCCB240451E5FBD8E5 /* Pods-HootMessengerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HootMessengerTests/Pods-HootMessengerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HootMessengerTests/Pods-HootMessengerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F04139AD136499C78266C34FA672B378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AF9606DAACC956AA130A5FF5D74D5F7 /* Pods-HootMessenger.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HootMessenger/Pods-HootMessenger-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HootMessenger/Pods-HootMessenger.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		143ABFF6159F78EAC303D7B7AC6D1BEF /* Build configuration list for PBXNativeTarget "Pods-HootMessenger-HootMessengerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D8D3DA97CE07551333921132991778E /* Debug */,
+				365887CB06562A44C26802B35DA8FD92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42CF7F2945AAE96EEBDD7469F66ECA8D /* Build configuration list for PBXNativeTarget "Pods-HootMessengerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A18F5A958A8AD6B165B28C95CCAA6E1 /* Debug */,
+				8CDB5847B76DED511A2F7551EE4EBF58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				119D25BC8590F02A997CE3B28DA2EFA5 /* Debug */,
+				6F4225877C794ABEB78776F47754104E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B06151D511312094135C8CD3756EEA70 /* Build configuration list for PBXNativeTarget "Pods-HootMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F04139AD136499C78266C34FA672B378 /* Debug */,
+				3598A876B995E5C231F57B7F63A0952C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_HootMessenger {
+  umbrella header "Pods-HootMessenger-umbrella.h"
+
+  export *
+  module * { export * }
+}
