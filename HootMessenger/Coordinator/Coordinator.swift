@@ -17,6 +17,13 @@ final class Coordinator: Coordinating {
     
     func presentLoginScreen() {
         let viewModel = LoginViewModel(coordinator: self)
-        navigationController.presentViewController(LoginViewController(viewModel: viewModel), animated: true)
+        let viewController = LoginViewController(viewModel: viewModel)
+        viewController.isModalInPresentation = true
+        navigationController.presentViewController(viewController, animated: false)
+    }
+    
+    func goToLoginScreen() {
+        let viewModel = LoginViewModel(coordinator: self)
+        navigationController.pushViewController(to: LoginViewController(viewModel: viewModel), animated: false)
     }
 }
