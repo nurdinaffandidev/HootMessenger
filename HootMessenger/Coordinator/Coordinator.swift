@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-final class Coordinator: NSObject, Coordinating {
-    var navigationController = UINavigationController()
-    var firstViewController: UIViewController?
+final class Coordinator: Coordinating {
+    var navigationController: NavigationCoordinating
     
-    static let shared = Coordinator()
+    init(navigationController: NavigationCoordinating) {
+        self.navigationController = navigationController
+    }
     
-    func start(animated: Bool) {
-        let firstViewController = ConversationsViewController()
-        self.firstViewController = firstViewController
-        navigationController.pushViewController(firstViewController, animated: animated)
+    func presentLoginScreen() {
+        let viewModel = LoginViewModel(coordinator: self)
+        navigationController.presentViewController(LoginViewController(viewModel: viewModel), animated: true)
     }
 }
