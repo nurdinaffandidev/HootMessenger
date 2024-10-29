@@ -49,22 +49,6 @@ final class LoginViewController: UIViewController {
             }.store(in: &cancellables)
     }
     
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
-    
-    
-    private lazy var contentStackView: UIStackView = {
-        let view = UIStackView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .vertical
-        return view
-    }()
-    
-    
     private lazy var mainContentStackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -117,7 +101,7 @@ final class LoginViewController: UIViewController {
         field.translatesAutoresizingMaskIntoConstraints = false
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
-        field.returnKeyType = .continue
+        field.returnKeyType = .done
         field.layer.cornerRadius = 25
         field.layer.borderWidth = 1
         field.layer.borderColor = UIColor.systemTeal.cgColor
@@ -155,25 +139,9 @@ final class LoginViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .thin)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
-    }()
-    
-    private lazy var testSpacer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
-        view.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        return view
-    }()
-    
-    private lazy var spacer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 1.5
-        return view
     }()
     
     // MARK: - Setup
@@ -186,57 +154,32 @@ final class LoginViewController: UIViewController {
         mainContentStackView.setCustomSpacing(10, after: emailField)
         mainContentStackView.addArrangedSubview(passwordField)
         mainContentStackView.setCustomSpacing(10, after: passwordField)
-//        mainContentStackView.addArrangedSubview(testSpacer)
-//        mainContentStackView.setCustomSpacing(10, after: testSpacer)
-        mainContentStackView.addArrangedSubview(spacer)
         
         bottomContentStackView.addArrangedSubview(loginButton)
         
-        contentStackView.addArrangedSubview(imageView)
-        contentStackView.addArrangedSubview(mainContentStackView)
-        contentStackView.addArrangedSubview(bottomContentStackView)
-        
-//        scrollView.addSubview(imageView)
-//        scrollView.addSubview(mainContentStackView)
-//        scrollView.addSubview(bottomContentStackView)
-        
-        scrollView.addSubview(contentStackView)
-        
-        view.addSubview(scrollView)
+        view.addSubview(imageView)
+        view.addSubview(mainContentStackView)
+        view.addSubview(bottomContentStackView)
     }
     
     func setupLayoutConstraints() {
         let safeLayout = view.safeAreaLayoutGuide
-        scrollView.snp.makeConstraints {
-            $0.top.equalTo(safeLayout.snp.top)
-            $0.width.equalTo(view.width)
-            $0.height.equalTo(view.height)
-            $0.bottom.equalTo(safeLayout.snp.bottom)
+        imageView.snp.makeConstraints {
+            $0.top.equalTo(safeLayout.snp.top).offset(30)
+            $0.height.width.equalTo(100)
+            $0.centerX.equalToSuperview()
         }
-        scrollView.layoutIfNeeded()
         
         mainContentStackView.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(30)
             $0.leading.equalTo(view.snp.leading)
             $0.trailing.equalTo(view.snp.trailing)
-            $0.bottom.equalTo(bottomContentStackView.snp.top)
-        }
-        
-        imageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(30)
-            $0.height.width.equalTo(100)
-            $0.centerX.equalToSuperview()
-        }
-        
-        pageTitle.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom)
         }
         
         bottomContentStackView.snp.makeConstraints {
             $0.leading.equalTo(view.snp.leading)
             $0.trailing.equalTo(view.snp.trailing)
-//            $0.bottom.equalTo(scrollView.snp.bottom)
-            $0.bottom.equalTo(contentStackView.snp.bottom)
+            $0.bottom.equalTo(safeLayout.snp.bottom)
         }
     }
     
