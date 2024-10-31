@@ -11,4 +11,5 @@ import UIKit
 protocol Coordinating {
     func presentLoginScreen()
     func goToLoginScreen()
+    func presentRegisterScreen()
 }

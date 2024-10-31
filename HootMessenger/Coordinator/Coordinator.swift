@@ -9,21 +9,40 @@ import Foundation
 import UIKit
 
 final class Coordinator: Coordinating {
-    var navigationController: NavigationCoordinating
+    var navigationCoordinator: NavigationCoordinating
     
     init(navigationController: NavigationCoordinating) {
-        self.navigationController = navigationController
+        self.navigationCoordinator = navigationController
     }
     
     func presentLoginScreen() {
         let viewModel = LoginViewModel(coordinator: self)
         let viewController = LoginViewController(viewModel: viewModel)
         viewController.isModalInPresentation = true
-        navigationController.presentViewController(viewController, animated: false)
+        DispatchQueue.main.async {
+            if self.navigationCoordinator.navigationController.isModalInPresentation {
+                self.navigationCoordinator.navigationController.dismiss(animated: false)
+            }
+            self.navigationCoordinator.presentViewController(viewController, animated: true)
+        }
     }
     
     func goToLoginScreen() {
         let viewModel = LoginViewModel(coordinator: self)
-        navigationController.pushViewController(to: LoginViewController(viewModel: viewModel), animated: false)
+        DispatchQueue.main.async {
+            self.navigationCoordinator.pushViewController(to: LoginViewController(viewModel: viewModel), animated: false)
+        }
+    }
+    
+    func presentRegisterScreen() {
+        let viewModel = RegisterViewModel(coordinator: self)
+        let viewController = RegisterViewController(viewModel: viewModel)
+        viewController.isModalInPresentation = true
+        DispatchQueue.main.async {
+            if self.navigationCoordinator.navigationController.isModalInPresentation {
+                self.navigationCoordinator.navigationController.dismiss(animated: false)
+            }
+            self.navigationCoordinator.presentViewController(viewController, animated: true)
+        }
     }
 }
