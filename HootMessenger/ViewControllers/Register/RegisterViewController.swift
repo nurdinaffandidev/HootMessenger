@@ -71,8 +71,7 @@ final class RegisterViewController: FillMainContentViewController {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Register"
-        title.font = .systemFont(ofSize: 30, weight: .thin)
-//        title.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
+        title.font = UIFont(name: "TrebuchetMS", size: 30)
         title.textAlignment = .center
         return title
     }()
@@ -154,7 +153,7 @@ final class RegisterViewController: FillMainContentViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 20)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
@@ -167,18 +166,10 @@ final class RegisterViewController: FillMainContentViewController {
         button.setTitleColor(.systemTeal, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 20)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
         return button
-    }()
-    
-    lazy var testView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        view.backgroundColor = .red
-        return view
     }()
     
     // MARK: - Setup
@@ -200,7 +191,6 @@ final class RegisterViewController: FillMainContentViewController {
         mainContentStackView.setCustomSpacing(10, after: emailField)
         mainContentStackView.addArrangedSubview(passwordField)
         mainContentStackView.setCustomSpacing(10, after: passwordField)
-//        mainContentStackView.addArrangedSubview(testView)
         
         bottomContentStackView.addArrangedSubview(submitButton)
         bottomContentStackView.setCustomSpacing(8, after: submitButton)

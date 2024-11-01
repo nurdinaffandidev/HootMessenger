@@ -77,8 +77,7 @@ final class LoginViewController: UIViewController {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Log in"
-        title.font = .systemFont(ofSize: 30, weight: .thin)
-//        title.font = UIFont(name: "HelveticaNeue-Thin", size: 30)
+        title.font = UIFont(name: "TrebuchetMS", size: 30)
         title.textAlignment = .center
         return title
     }()
@@ -137,7 +136,7 @@ final class LoginViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.borderColor = UIColor.systemTeal.cgColor
         button.layer.borderWidth = 2
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 20)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
@@ -150,7 +149,7 @@ final class LoginViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 20)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         return button
