@@ -21,16 +21,78 @@ class ConversationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPurple
+        showOverlayView()
+    }
+    
+    private lazy var overlayPage: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemTeal
+        return view
+    }()
+    
+    private lazy var overlayPageTitle: OverlayLabel = {
+        let view = OverlayLabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.textColor = .white
+        view.text = "Hoot Messenger"
+        view.font = UIFont(name: "SignPainter", size: 50)
+        view.textAlignment = .center
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return view
+    }()
+    
+    private lazy var overlayImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(systemName: "message.circle")?.withRenderingMode(.alwaysTemplate)
+        view.tintColor = .white
+        view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        return view
+    }()
+    
+    func showOverlayView() {
+        overlayPage.addSubview(overlayImageView)
+        overlayPage.addSubview(overlayPageTitle)
+        view.addSubview(overlayPage)
+        
+        overlayImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-150)
+        }
+        
+        overlayPageTitle.snp.makeConstraints {
+            $0.top.equalTo(overlayImageView.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        overlayPage.snp.makeConstraints {
+            $0.leading.top.trailing.bottom.equalToSuperview()
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let isLoggedIn = UserDefaults.standard.bool(forKey: "logged_in")
         if !isLoggedIn {
-            coordinator.goToLoginScreen()
-//            coordinator.presentLoginScreen()
+            coordinator.presentLoginScreen()
         }
     }
 }
 
+class OverlayLabel: UILabel {
+    override func drawText(in rect: CGRect) {
+        super.drawText(
+            in: rect.inset(
+                by: UIEdgeInsets(
+                    top: 0,
+                    left: 0,
+                    bottom: 10,
+                    right: 0
+                )
+            )
+        )
+    }
+}
