@@ -31,10 +31,6 @@ final class LoginViewController: UIViewController {
         setupLayoutConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     private func bind() {
         viewModel.bind(uiEvents.eraseToAnyPublisher())
             .receive(on: DispatchQueue.main)
@@ -135,12 +131,28 @@ final class LoginViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Log In", for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(.systemTeal, for: .normal)
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+        button.layer.borderColor = UIColor.systemTeal.cgColor
+        button.layer.borderWidth = 2
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return button
+    }()
+    
+    private lazy var registerButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Register", for: .normal)
         button.backgroundColor = .systemTeal
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         return button
     }()
     
@@ -156,12 +168,15 @@ final class LoginViewController: UIViewController {
         mainContentStackView.setCustomSpacing(10, after: passwordField)
         
         bottomContentStackView.addArrangedSubview(loginButton)
+        bottomContentStackView.setCustomSpacing(8, after: loginButton)
+        bottomContentStackView.addArrangedSubview(registerButton)
         
         view.addSubview(imageView)
         view.addSubview(mainContentStackView)
         view.addSubview(bottomContentStackView)
     }
     
+    // MARK: - Layout Constraints
     func setupLayoutConstraints() {
         let safeLayout = view.safeAreaLayoutGuide
         imageView.snp.makeConstraints {
@@ -181,6 +196,15 @@ final class LoginViewController: UIViewController {
             $0.trailing.equalTo(view.snp.trailing)
             $0.bottom.equalTo(safeLayout.snp.bottom)
         }
+    }
+    
+    // MARK: - Functions
+    @objc private func didTapRegister() {
+        uiEvents.send(.registerButtonPressed)
+    }
+    
+    @objc private func didTapLogin() {
+        
     }
     
 }

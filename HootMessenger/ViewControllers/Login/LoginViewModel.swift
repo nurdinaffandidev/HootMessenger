@@ -20,6 +20,11 @@ final class LoginViewModel {
     deinit {
         cancellables.forEach { $0.cancel() }
     }
+    
+    // MARK: - Functions
+    func routeToRegisterPage() {
+        coordinator.presentRegisterScreen()
+    }
 }
 
 // MARK: Event Handling
@@ -40,7 +45,7 @@ extension LoginViewModel {
             guard let self = self else { return }
             switch event {
             case .registerButtonPressed:
-                break
+                self.routeToRegisterPage()
             case .submitLoginDetails(let username, let password):
                 break
             case .routeToConversations:
