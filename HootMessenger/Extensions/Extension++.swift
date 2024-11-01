@@ -35,11 +35,11 @@ extension UIView {
     }
     
     public var topPadding: CGFloat {
-        return window?.safeAreaInsets.top ?? 0
+        return window?.safeAreaInsets.top ?? .zero
     }
     
     public var bottomPadding: CGFloat {
-        return window?.safeAreaInsets.bottom ?? 0
+        return window?.safeAreaInsets.bottom ?? .zero
     }
 
 }
