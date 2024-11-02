@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 open class FillMainContentViewController: BaseViewController, ViewControllerLayoutable {
     public typealias LayoutType = FillMainContentLayout
     
     open override func initializeLayout() {
         layout = FillMainContentLayout(view: view)
+    }
+}
+
+extension FillMainContentViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
     }
 }
