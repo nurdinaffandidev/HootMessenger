@@ -90,6 +90,7 @@ final class RegisterViewController: FillMainContentViewController {
         field.leftViewMode = .always
         field.backgroundColor = .white
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.delegate = self
         return field
     }()
     
@@ -107,6 +108,7 @@ final class RegisterViewController: FillMainContentViewController {
         field.leftViewMode = .always
         field.backgroundColor = .white
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.delegate = self
         return field
     }()
 
@@ -124,6 +126,7 @@ final class RegisterViewController: FillMainContentViewController {
         field.leftViewMode = .always
         field.backgroundColor = .white
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.delegate = self
         return field
     }()
 
@@ -142,6 +145,7 @@ final class RegisterViewController: FillMainContentViewController {
         field.backgroundColor = .white
         field.isSecureTextEntry = true
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.delegate = self
         return field
     }()
     

@@ -105,6 +105,7 @@ final class LoginViewController: UIViewController {
         field.leftViewMode = .always
         field.backgroundColor = .white
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.delegate = self
         return field
     }()
 
@@ -123,6 +124,7 @@ final class LoginViewController: UIViewController {
         field.backgroundColor = .white
         field.isSecureTextEntry = true
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.delegate = self
         return field
     }()
 
@@ -206,4 +208,11 @@ final class LoginViewController: UIViewController {
         
     }
     
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+    }
 }
