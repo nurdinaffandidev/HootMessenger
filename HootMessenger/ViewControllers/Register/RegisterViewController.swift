@@ -45,6 +45,13 @@ final class RegisterViewController: FillMainContentViewController {
         setupLayoutConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // to make imageView circle
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.width / 2
+    }
+    
     private lazy var topSpacer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +71,9 @@ final class RegisterViewController: FillMainContentViewController {
         imageView.image = UIImage(systemName: "person.crop.circle.badge.plus")?.withRenderingMode(.alwaysTemplate)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemTeal
+        imageView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
+        imageView.addGestureRecognizer(gesture)
         return imageView
     }()
     
@@ -179,12 +189,13 @@ final class RegisterViewController: FillMainContentViewController {
     // MARK: - Setup
     private func setup() {
         view.backgroundColor = .white
+        scrollView.isUserInteractionEnabled = true
         
         imageWrapper.addSubview(imageView)
         
         mainContentStackView.addArrangedSubview(topSpacer)
         mainContentStackView.addArrangedSubview(imageWrapper)
-        mainContentStackView.setCustomSpacing(30, after: imageWrapper)
+        mainContentStackView.setCustomSpacing(10, after: imageWrapper)
         mainContentStackView.addArrangedSubview(pageTitle)
         mainContentStackView.setCustomSpacing(20, after: pageTitle)
         mainContentStackView.addArrangedSubview(firstNameField)
@@ -215,8 +226,8 @@ final class RegisterViewController: FillMainContentViewController {
         }
         
         imageView.snp.makeConstraints {
-            $0.height.width.equalTo(100)
-            $0.centerX.centerY.equalToSuperview()
+            $0.height.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(imageWrapper.snp.height)
         }
         
         pageTitle.snp.makeConstraints {
@@ -246,6 +257,10 @@ final class RegisterViewController: FillMainContentViewController {
     }
     
     // MARK: - Functions
+    @objc private func didTapChangeProfilePic() {
+        presentPhotoPickerActionSheet()
+    }
+    
     @objc private func didTapBack() {
         uiEvents.send(.backButtonPressed)
     }
@@ -255,3 +270,67 @@ final class RegisterViewController: FillMainContentViewController {
     }
 }
 
+// MARK: - Photo Picker
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func presentPhotoPickerActionSheet() {
+        let actionSheet = UIAlertController(
+            title: "Profile Picture",
+            message: "How would you like to select a picture?",
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "Take Photo",
+                style: .default,
+                handler: { [weak self] _ in
+                    self?.presentCamera()
+                }
+            )
+        )
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "Choose Photo",
+                style: .default,
+                handler: { [weak self] _ in
+                    self?.presentPhotoPicker()
+                }
+            )
+        )
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        let viewController = UIImagePickerController()
+        viewController.sourceType = .camera
+        viewController.delegate = self
+        viewController.allowsEditing = true
+        present(viewController, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let viewController = UIImagePickerController()
+        viewController.sourceType = .photoLibrary
+        viewController.delegate = self
+        viewController.allowsEditing = true
+        present(viewController, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        self.imageView.image = selectedImage
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
