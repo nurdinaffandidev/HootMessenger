@@ -7,14 +7,17 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
 
 final class RegisterViewModel {
     private let coordinator: Coordinating
+    private let service: APIServicing
     private var viewModelEvent = PassthroughSubject<ViewModelEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
     
-    init(coordinator: Coordinating) {
+    init(coordinator: Coordinating, service: APIServicing) {
         self.coordinator = coordinator
+        self.service = service
     }
     
     deinit {
@@ -22,8 +25,22 @@ final class RegisterViewModel {
     }
     
     // MARK: - Functions
-    func routeToLoginPage() {
+    func routeToLoginScreen() {
         coordinator.presentLoginScreen()
+    }
+    
+    func submitRegisterationDetails(
+        _ firstName: String,
+        _ lastName: String,
+        _ email: String,
+        _ password: String,
+        _ userImage: UIImage
+    ) {
+        
+    }
+    
+    func routeToConversationsScreen() {
+        coordinator.goToConversationsScreen()
     }
 }
 
@@ -31,12 +48,19 @@ final class RegisterViewModel {
 extension RegisterViewModel {
     enum UIEvent {
         case backButtonPressed
-        case submitRegisterDetails(username: String, password: String)
-        case routeToConversations
+        case submitRegisterDetails(
+            firstName: String,
+            lastName: String,
+            email: String,
+            password: String,
+            userImage: UIImage
+        )
+        case routeToConversationsScreen
     }
 
     enum ViewModelEvent {
         case registerSuccess
+        case registerUserExists
         case registerFail
     }
     
@@ -45,11 +69,23 @@ extension RegisterViewModel {
             guard let self = self else { return }
             switch event {
             case .backButtonPressed:
-                self.routeToLoginPage()
-            case .submitRegisterDetails(let username, let password):
-                break
-            case .routeToConversations:
-                break
+                self.routeToLoginScreen()
+            case .submitRegisterDetails(
+                let firstName,
+                let lastName,
+                let email,
+                let password,
+                let userImage
+            ):
+                self.submitRegisterationDetails(
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    userImage
+                )
+            case .routeToConversationsScreen:
+                self.routeToLoginScreen()
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()
