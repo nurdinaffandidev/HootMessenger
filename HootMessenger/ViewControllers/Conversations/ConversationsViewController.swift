@@ -6,22 +6,41 @@
 //
 
 import UIKit
+import Combine
 
 class ConversationsViewController: UIViewController {
-    private let coordinator: Coordinating
+    private var viewModel: ConversationsViewModel
+    private var uiEvents = PassthroughSubject<ConversationsViewModel.UIEvent, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
-    init(coordinator: Coordinating) {
-        self.coordinator = coordinator
+    init(viewModel: ConversationsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func bind() {
+        viewModel.bind(uiEvents.eraseToAnyPublisher())
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] event in
+                guard let self = self else { return }
+                switch event {
+                case .validationSuccess:
+                    break
+                case .validationFail:
+                    uiEvents.send(.presentLoginScreen)
+                }
+            }.store(in: &cancellables)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showOverlayView()
+        uiEvents.send(.viewDidLoad)
     }
     
     private lazy var overlayPage: UIView = {
@@ -70,14 +89,6 @@ class ConversationsViewController: UIViewController {
         
         overlayPage.snp.makeConstraints {
             $0.leading.top.trailing.bottom.equalToSuperview()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let isLoggedIn = UserDefaults.standard.bool(forKey: "logged_in")
-        if !isLoggedIn {
-            coordinator.presentLoginScreen()
         }
     }
 }
