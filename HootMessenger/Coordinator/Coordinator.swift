@@ -45,4 +45,11 @@ final class Coordinator: Coordinating {
             self.navigationCoordinator.presentViewController(viewController, animated: true)
         }
     }
+    
+    func goToConversationsScreen() {
+        let viewModel = ConversationsViewModel(coordinator: self)
+        DispatchQueue.main.async {
+            self.navigationCoordinator.pushViewController(to: ConversationsViewController(viewModel: viewModel), animated: true)
+        }
+    }
 }
