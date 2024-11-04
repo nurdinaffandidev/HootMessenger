@@ -11,11 +11,13 @@ import FirebaseAuth
 
 class ConversationsViewModel {
     private let coordinator: Coordinating
+    private let service: APIServicing
     private var viewModelEvent = PassthroughSubject<ViewModelEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
     
-    init(coordinator: Coordinating) {
+    init(coordinator: Coordinating, service: APIServicing) {
         self.coordinator = coordinator
+        self.service = service
     }
     
     deinit {
@@ -38,6 +40,7 @@ class ConversationsViewModel {
 extension ConversationsViewModel {
     enum UIEvent {
         case viewDidLoad
+        case viewDidAppear
         case presentLoginScreen
     }
     
@@ -50,9 +53,9 @@ extension ConversationsViewModel {
         uiEvents.sink { [weak self] event in
             guard let self = self else { return }
             switch event {
-            case.viewDidLoad:
+            case .viewDidLoad, .viewDidAppear:
                 self.validateAuthorization()
-            case .presentLoginScreen:
+            case .presentLoginScreen: 
                 self.presentLoginScreen()
             }
         }.store(in: &cancellables)
