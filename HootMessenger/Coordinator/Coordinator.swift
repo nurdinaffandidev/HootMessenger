@@ -10,13 +10,14 @@ import UIKit
 
 final class Coordinator: Coordinating {
     var navigationCoordinator: NavigationCoordinating
+    var service: APIServicing = APIService.shared
     
     init(navigationController: NavigationCoordinating) {
         self.navigationCoordinator = navigationController
     }
     
     func presentLoginScreen() {
-        let viewModel = LoginViewModel(coordinator: self)
+        let viewModel = LoginViewModel(coordinator: self, service: service)
         let viewController = LoginViewController(viewModel: viewModel)
         viewController.isModalInPresentation = true
         DispatchQueue.main.async {
@@ -28,14 +29,14 @@ final class Coordinator: Coordinating {
     }
     
     func goToLoginScreen() {
-        let viewModel = LoginViewModel(coordinator: self)
+        let viewModel = LoginViewModel(coordinator: self, service: service)
         DispatchQueue.main.async {
             self.navigationCoordinator.pushViewController(to: LoginViewController(viewModel: viewModel), animated: false)
         }
     }
     
     func presentRegisterScreen() {
-        let viewModel = RegisterViewModel(coordinator: self)
+        let viewModel = RegisterViewModel(coordinator: self, service: service)
         let viewController = RegisterViewController(viewModel: viewModel)
         viewController.isModalInPresentation = true
         DispatchQueue.main.async {
@@ -47,9 +48,15 @@ final class Coordinator: Coordinating {
     }
     
     func goToConversationsScreen() {
-        let viewModel = ConversationsViewModel(coordinator: self)
+        let viewModel = ConversationsViewModel(coordinator: self, service: service)
         DispatchQueue.main.async {
             self.navigationCoordinator.pushViewController(to: ConversationsViewController(viewModel: viewModel), animated: true)
+        }
+    }
+    
+    func dismissPresentedView() {
+        DispatchQueue.main.async {
+            self.navigationCoordinator.navigationController.dismiss(animated: true)
         }
     }
 }
