@@ -10,11 +10,13 @@ import Combine
 
 final class LoginViewModel {
     private let coordinator: Coordinating
+    private let service: APIServicing
     private var viewModelEvent = PassthroughSubject<ViewModelEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
     
-    init(coordinator: Coordinating) {
+    init(coordinator: Coordinating, service: APIServicing) {
         self.coordinator = coordinator
+        self.service = service
     }
     
     deinit {
@@ -22,8 +24,12 @@ final class LoginViewModel {
     }
     
     // MARK: - Functions
-    func routeToRegisterPage() {
+    func routeToRegisterScreen() {
         coordinator.presentRegisterScreen()
+    }
+    
+    func submitLoginDetails(_ email: String, _ password: String) {
+        
     }
 }
 
@@ -31,8 +37,7 @@ final class LoginViewModel {
 extension LoginViewModel {
     enum UIEvent {
         case registerButtonPressed
-        case submitLoginDetails(username: String, password: String)
-        case routeToConversations
+        case submitLoginDetails(email: String, password: String)
     }
 
     enum ViewModelEvent {
@@ -45,11 +50,9 @@ extension LoginViewModel {
             guard let self = self else { return }
             switch event {
             case .registerButtonPressed:
-                self.routeToRegisterPage()
-            case .submitLoginDetails(let username, let password):
-                break
-            case .routeToConversations:
-                break
+                self.routeToRegisterScreen()
+            case .submitLoginDetails(let email, let password):
+                self.submitLoginDetails(email, password)
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()
