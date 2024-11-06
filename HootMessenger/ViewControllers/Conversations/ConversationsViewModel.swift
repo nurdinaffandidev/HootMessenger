@@ -26,7 +26,7 @@ class ConversationsViewModel {
     
     // MARK: - Functions
     func validateAuthorization() {
-        FirebaseAuth.Auth.auth().currentUser == nil ?
+        service.validateAuthorization() ?
         viewModelEvent.send(.validationFail) :
         viewModelEvent.send(.validationSuccess)
     }
@@ -39,7 +39,6 @@ class ConversationsViewModel {
 // MARK: Event Handling
 extension ConversationsViewModel {
     enum UIEvent {
-        case viewDidLoad
         case viewDidAppear
         case presentLoginScreen
     }
@@ -53,7 +52,7 @@ extension ConversationsViewModel {
         uiEvents.sink { [weak self] event in
             guard let self = self else { return }
             switch event {
-            case .viewDidLoad, .viewDidAppear:
+            case .viewDidAppear:
                 self.validateAuthorization()
             case .presentLoginScreen: 
                 self.presentLoginScreen()

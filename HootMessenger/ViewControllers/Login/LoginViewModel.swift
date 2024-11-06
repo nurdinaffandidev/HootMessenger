@@ -29,7 +29,19 @@ final class LoginViewModel {
     }
     
     func submitLoginDetails(_ email: String, _ password: String) {
-        
+        Task {
+            do {
+                let result = try await service.signIn(withEmail: email, password: password)
+                print("Logged in User: \(result.user)")
+                viewModelEvent.send(.loginSuccess)
+            } catch {
+                viewModelEvent.send(.loginFail)
+            }
+        }
+    }
+    
+    func routeToConversationsScreen() {
+        coordinator.dismissPresentedView()
     }
 }
 
@@ -38,6 +50,7 @@ extension LoginViewModel {
     enum UIEvent {
         case registerButtonPressed
         case submitLoginDetails(email: String, password: String)
+        case routeToConversationsScreen
     }
 
     enum ViewModelEvent {
@@ -53,6 +66,8 @@ extension LoginViewModel {
                 self.routeToRegisterScreen()
             case .submitLoginDetails(let email, let password):
                 self.submitLoginDetails(email, password)
+            case .routeToConversationsScreen:
+                self.routeToConversationsScreen()
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()

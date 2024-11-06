@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import FirebaseAuth
+import UIKit
 
 final class RegisterViewModel {
     private let coordinator: Coordinating
@@ -36,11 +36,38 @@ final class RegisterViewModel {
         _ password: String,
         _ userImage: UIImage
     ) {
-        
+        Task {
+            service.userExists(with: email) { exists in
+                guard !exists else {
+                    // user already exists
+                    self.viewModelEvent.send(.registerUserExists)
+                    return
+                }
+            }
+            
+            do {
+                let result = try await service.createUser(
+                    withEmail: email,
+                    password: password
+                )
+                print("Created User: \(result.user)")
+                
+                let chatUser = ChatAppUser(
+                    firstName: firstName,
+                    lastName: lastName,
+                    emailAddress: email
+                )
+                service.insertUser(with: chatUser)
+                viewModelEvent.send(.registerSuccess)
+            } catch let error {
+                print("Create User Error: \(String (describing: error))")
+                viewModelEvent.send(.registerFail)
+            }
+        }
     }
     
     func routeToConversationsScreen() {
-        coordinator.goToConversationsScreen()
+        coordinator.dismissPresentedView()
     }
 }
 
@@ -85,7 +112,7 @@ extension RegisterViewModel {
                     userImage
                 )
             case .routeToConversationsScreen:
-                self.routeToLoginScreen()
+                self.routeToConversationsScreen()
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()

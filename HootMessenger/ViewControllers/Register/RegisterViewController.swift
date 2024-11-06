@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Combine
 import SnapKit
+import FirebaseAuth
 
 final class RegisterViewController: FillMainContentViewController {
     private var viewModel: RegisterViewModel
@@ -32,7 +33,9 @@ final class RegisterViewController: FillMainContentViewController {
                 guard let self = self else { return }
                 switch event {
                 case .registerSuccess:
-                    break
+                    uiEvents.send(.routeToConversationsScreen)
+                case .registerUserExists:
+                    self.alertUserRegisterError(message: "Looks like a user account for that email address already exists.")
                 case .registerFail:
                     break
                 }
@@ -169,6 +172,7 @@ final class RegisterViewController: FillMainContentViewController {
         button.layer.masksToBounds = true
         button.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 20)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.addTarget(self, action: #selector(didTapSubmit), for: .touchUpInside)
         return button
     }()
 
@@ -266,7 +270,49 @@ final class RegisterViewController: FillMainContentViewController {
     }
     
     @objc private func didTapSubmit() {
-        
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        guard let firstName = firstNameField.text,
+              let lastName = lastNameField.text,
+              let email = emailField.text,
+              let password = passwordField.text,
+              let userImage = imageView.image,
+              !firstName.isEmpty, !lastName.isEmpty,
+              !email.isEmpty, !password.isEmpty,
+              password.count >= 6 else {
+                alertUserRegisterError()
+                return
+        }
+        uiEvents.send(
+            .submitRegisterDetails(
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+                userImage: userImage
+            )
+        )
+    }
+    
+    // MARK: - Alerts
+    func alertUserRegisterError(
+        message: String = "Please enter all information to create a new account."
+    ) {
+        let alert = UIAlertController(
+            title: "Woops",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(
+                title:"Dismiss",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        present(alert, animated: true)
     }
 }
 
@@ -332,5 +378,22 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension RegisterViewController {
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstNameField:
+            lastNameField.becomeFirstResponder()
+        case lastNameField:
+            emailField.becomeFirstResponder()
+        case emailField:
+            passwordField.becomeFirstResponder()
+        case passwordField:
+            didTapSubmit()
+        default: break
+        }
+        return true
     }
 }

@@ -38,9 +38,9 @@ final class LoginViewController: UIViewController {
                 guard let self = self else { return }
                 switch event {
                 case .loginSuccess:
-                    break
+                    uiEvents.send(.routeToConversationsScreen)
                 case .loginFail:
-                    break
+                    self.alertUserLoginError(message: "Error logging in")
                 }
             }.store(in: &cancellables)
     }
@@ -140,6 +140,7 @@ final class LoginViewController: UIViewController {
         button.layer.borderWidth = 2
         button.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 20)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
         return button
     }()
     
@@ -205,9 +206,34 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func didTapLogin() {
-        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        guard let email = emailField.text, 
+              let password = passwordField.text,
+              !email.isEmpty, !password.isEmpty,
+              password.count >= 6 else {
+                alertUserLoginError()
+                return
+        }
+        uiEvents.send(.submitLoginDetails(email: email, password: password))
     }
     
+    // MARK: - Alerts
+    func alertUserLoginError(message: String = "Please enter all information to log in.") {
+        let alert = UIAlertController(
+            title: "Woops",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(
+                title:"Dismiss",
+                style: .cancel,
+                handler: nil
+            )
+        )
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - UITextFieldDelegate

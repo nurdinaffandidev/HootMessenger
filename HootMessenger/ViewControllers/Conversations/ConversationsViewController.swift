@@ -40,7 +40,12 @@ class ConversationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showOverlayView()
-        uiEvents.send(.viewDidLoad)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        uiEvents.send(.viewDidAppear)
+        
     }
     
     private lazy var overlayPage: UIView = {
