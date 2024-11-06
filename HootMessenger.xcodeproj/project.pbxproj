@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15317839C6392DDE9A692E0B /* Pods_HootMessengerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570E9FDCB233128855A40065 /* Pods_HootMessengerTests.framework */; };
 		437A4B568C46C4821CE3364C /* Pods_HootMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E069EB26CB07D36BF456C175 /* Pods_HootMessenger.framework */; };
-		AC2B9427AD4944C07EB3317D /* Pods_HootMessenger_HootMessengerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B58E687E5281460FC067E9 /* Pods_HootMessenger_HootMessengerUITests.framework */; };
 		D04892A32CCCA7C000D7A12B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04892A22CCCA7C000D7A12B /* LoginViewModel.swift */; };
 		D04892A62CCCAC8500D7A12B /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04892A52CCCAC8500D7A12B /* NavigationCoordinator.swift */; };
 		D04892A82CCCAC9100D7A12B /* NavigationCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04892A72CCCAC9100D7A12B /* NavigationCoordinating.swift */; };
+		D054BB2A2CD12A5B002B054D /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB292CD12A5B002B054D /* RegisterViewModel.swift */; };
+		D054BB2D2CD12B61002B054D /* ChatAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB2C2CD12B61002B054D /* ChatAppUser.swift */; };
+		D054BB392CD32257002B054D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB2F2CD32257002B054D /* BaseViewController.swift */; };
+		D054BB3A2CD32257002B054D /* FillMainContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB302CD32257002B054D /* FillMainContentViewController.swift */; };
+		D054BB3B2CD32257002B054D /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB322CD32257002B054D /* BaseLayout.swift */; };
+		D054BB3C2CD32257002B054D /* FillMainContentLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB332CD32257002B054D /* FillMainContentLayout.swift */; };
+		D054BB3D2CD32257002B054D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB342CD32257002B054D /* Layout.swift */; };
+		D054BB3E2CD32257002B054D /* ViewControllerLayoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB352CD32257002B054D /* ViewControllerLayoutable.swift */; };
+		D054BB3F2CD32257002B054D /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D054BB362CD32257002B054D /* ViewControllerProtocol.swift */; };
+		D05AD1A32CD7A8A70075AA44 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1A22CD7A8A70075AA44 /* ConversationsViewModel.swift */; };
+		D05AD1A52CD905CB0075AA44 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1A42CD905CB0075AA44 /* APIService.swift */; };
+		D05AD1A72CD907000075AA44 /* APIServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1A62CD907000075AA44 /* APIServicing.swift */; };
 		D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0855ADA2CCCCE9A00F39D94 /* SnapKit */; };
 		D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0855ADC2CCCD11800F39D94 /* Extension++.swift */; };
+		D098620B2CD75D9800EA8B8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */; };
 		D0B146872CC95906003D9711 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146862CC95906003D9711 /* LoginViewController.swift */; };
 		D0B1468A2CC9591B003D9711 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146892CC9591B003D9711 /* RegisterViewController.swift */; };
 		D0B1468D2CC95938003D9711 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */; };
@@ -30,6 +41,7 @@
 		D0EB3A562CC9309F00D76DD3 /* HootMessengerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A552CC9309F00D76DD3 /* HootMessengerUITestsLaunchTests.swift */; };
 		D0EB3A6B2CC93D1600D76DD3 /* Coordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A6A2CC93D1600D76DD3 /* Coordinating.swift */; };
 		D0EB3A6D2CC93D4200D76DD3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A6C2CC93D4200D76DD3 /* Coordinator.swift */; };
+		D0FC6BE02CD5E77B006204A5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0FC6BDF2CD5E77B006204A5 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,19 +75,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		28225C0D404B781EEFA5EBB6 /* Pods-HootMessengerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HootMessengerTests.debug.xcconfig"; path = "Target Support Files/Pods-HootMessengerTests/Pods-HootMessengerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		31B58E687E5281460FC067E9 /* Pods_HootMessenger_HootMessengerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HootMessenger_HootMessengerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC8EC5D4F7B113D1094863A /* Pods-HootMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HootMessenger.release.xcconfig"; path = "Target Support Files/Pods-HootMessenger/Pods-HootMessenger.release.xcconfig"; sourceTree = "<group>"; };
-		570E9FDCB233128855A40065 /* Pods_HootMessengerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HootMessengerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5480158BA6693E85533C3DB /* Pods-HootMessengerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HootMessengerTests.release.xcconfig"; path = "Target Support Files/Pods-HootMessengerTests/Pods-HootMessengerTests.release.xcconfig"; sourceTree = "<group>"; };
-		CD0E389561F21DB98251B52E /* Pods-HootMessenger-HootMessengerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HootMessenger-HootMessengerUITests.release.xcconfig"; path = "Target Support Files/Pods-HootMessenger-HootMessengerUITests/Pods-HootMessenger-HootMessengerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D04892A22CCCA7C000D7A12B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D04892A52CCCAC8500D7A12B /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		D04892A72CCCAC9100D7A12B /* NavigationCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinating.swift; sourceTree = "<group>"; };
+		D054BB292CD12A5B002B054D /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		D054BB2C2CD12B61002B054D /* ChatAppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppUser.swift; sourceTree = "<group>"; };
+		D054BB2F2CD32257002B054D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D054BB302CD32257002B054D /* FillMainContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillMainContentViewController.swift; sourceTree = "<group>"; };
+		D054BB322CD32257002B054D /* BaseLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
+		D054BB332CD32257002B054D /* FillMainContentLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillMainContentLayout.swift; sourceTree = "<group>"; };
+		D054BB342CD32257002B054D /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		D054BB352CD32257002B054D /* ViewControllerLayoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLayoutable.swift; sourceTree = "<group>"; };
+		D054BB362CD32257002B054D /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
+		D05AD1A22CD7A8A70075AA44 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
+		D05AD1A42CD905CB0075AA44 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		D05AD1A62CD907000075AA44 /* APIServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServicing.swift; sourceTree = "<group>"; };
 		D0855AD12CCCCC6F00F39D94 /* HootMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HootMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD22CCCCC6F00F39D94 /* HootMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD32CCCCC6F00F39D94 /* HootMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855ADC2CCCD11800F39D94 /* Extension++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension++.swift"; sourceTree = "<group>"; };
+		D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0B146862CC95906003D9711 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0B146892CC9591B003D9711 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +114,6 @@
 		D0EB3A6C2CC93D4200D76DD3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D2FD20CF13F78938E956F54B /* Pods-HootMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HootMessenger.debug.xcconfig"; path = "Target Support Files/Pods-HootMessenger/Pods-HootMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 		E069EB26CB07D36BF456C175 /* Pods_HootMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HootMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F271B2ABFADF3FCC43153E2C /* Pods-HootMessenger-HootMessengerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HootMessenger-HootMessengerUITests.debug.xcconfig"; path = "Target Support Files/Pods-HootMessenger-HootMessengerUITests/Pods-HootMessenger-HootMessengerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +123,7 @@
 			files = (
 				437A4B568C46C4821CE3364C /* Pods_HootMessenger.framework in Frameworks */,
 				D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */,
+				D0FC6BE02CD5E77B006204A5 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +131,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15317839C6392DDE9A692E0B /* Pods_HootMessengerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +138,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC2B9427AD4944C07EB3317D /* Pods_HootMessenger_HootMessengerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				E069EB26CB07D36BF456C175 /* Pods_HootMessenger.framework */,
-				31B58E687E5281460FC067E9 /* Pods_HootMessenger_HootMessengerUITests.framework */,
-				570E9FDCB233128855A40065 /* Pods_HootMessengerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -141,10 +157,6 @@
 			children = (
 				D2FD20CF13F78938E956F54B /* Pods-HootMessenger.debug.xcconfig */,
 				3CC8EC5D4F7B113D1094863A /* Pods-HootMessenger.release.xcconfig */,
-				F271B2ABFADF3FCC43153E2C /* Pods-HootMessenger-HootMessengerUITests.debug.xcconfig */,
-				CD0E389561F21DB98251B52E /* Pods-HootMessenger-HootMessengerUITests.release.xcconfig */,
-				28225C0D404B781EEFA5EBB6 /* Pods-HootMessengerTests.debug.xcconfig */,
-				B5480158BA6693E85533C3DB /* Pods-HootMessengerTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -158,11 +170,58 @@
 			path = NavigationCoordinator;
 			sourceTree = "<group>";
 		};
+		D054BB2B2CD12B2F002B054D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D054BB2C2CD12B61002B054D /* ChatAppUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D054BB2E2CD3220F002B054D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D054BB382CD32257002B054D /* BaseViewController */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D054BB312CD32257002B054D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D054BB2F2CD32257002B054D /* BaseViewController.swift */,
+				D054BB302CD32257002B054D /* FillMainContentViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D054BB372CD32257002B054D /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				D054BB322CD32257002B054D /* BaseLayout.swift */,
+				D054BB332CD32257002B054D /* FillMainContentLayout.swift */,
+				D054BB342CD32257002B054D /* Layout.swift */,
+				D054BB352CD32257002B054D /* ViewControllerLayoutable.swift */,
+				D054BB362CD32257002B054D /* ViewControllerProtocol.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		D054BB382CD32257002B054D /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D054BB312CD32257002B054D /* Base */,
+				D054BB372CD32257002B054D /* Layouts */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
 		D0B146842CC958E2003D9711 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
 				D0EB3A362CC9309E00D76DD3 /* ConversationsViewController.swift */,
 				D0B146912CC95976003D9711 /* NewConversationViewController.swift */,
+				D05AD1A22CD7A8A70075AA44 /* ConversationsViewModel.swift */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -180,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B146892CC9591B003D9711 /* RegisterViewController.swift */,
+				D054BB292CD12A5B002B054D /* RegisterViewModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -217,6 +277,9 @@
 		D0EB3A312CC9309E00D76DD3 /* HootMessenger */ = {
 			isa = PBXGroup;
 			children = (
+				D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */,
+				D054BB2E2CD3220F002B054D /* Components */,
+				D054BB2B2CD12B2F002B054D /* Model */,
 				D04892A42CCCAC3200D7A12B /* NavigationCoordinator */,
 				D0EB3A692CC9322600D76DD3 /* Extensions */,
 				D0EB3A682CC9321100D76DD3 /* Coordinator */,
@@ -287,6 +350,8 @@
 		D0EB3A672CC9320B00D76DD3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D05AD1A42CD905CB0075AA44 /* APIService.swift */,
+				D05AD1A62CD907000075AA44 /* APIServicing.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -320,6 +385,7 @@
 				D0EB3A2C2CC9309E00D76DD3 /* Frameworks */,
 				D0EB3A2D2CC9309E00D76DD3 /* Resources */,
 				D054FC6A2CCCCA8B00AF1395 /* Embed Frameworks */,
+				F6A7508EE81D89F8C3C5BFA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +394,7 @@
 			name = HootMessenger;
 			packageProductDependencies = (
 				D0855ADA2CCCCE9A00F39D94 /* SnapKit */,
+				D0FC6BDF2CD5E77B006204A5 /* IQKeyboardManagerSwift */,
 			);
 			productName = HootMessenger;
 			productReference = D0855AD12CCCCC6F00F39D94 /* HootMessenger.app */;
@@ -337,7 +404,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0EB3A5C2CC9309F00D76DD3 /* Build configuration list for PBXNativeTarget "HootMessengerTests" */;
 			buildPhases = (
-				1AAC83FC74EB8FFF9622CDA2 /* [CP] Check Pods Manifest.lock */,
 				D0EB3A412CC9309F00D76DD3 /* Sources */,
 				D0EB3A422CC9309F00D76DD3 /* Frameworks */,
 				D0EB3A432CC9309F00D76DD3 /* Resources */,
@@ -356,7 +422,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0EB3A5F2CC9309F00D76DD3 /* Build configuration list for PBXNativeTarget "HootMessengerUITests" */;
 			buildPhases = (
-				931219692C90AF14F1BCA1B7 /* [CP] Check Pods Manifest.lock */,
 				D0EB3A4B2CC9309F00D76DD3 /* Sources */,
 				D0EB3A4C2CC9309F00D76DD3 /* Frameworks */,
 				D0EB3A4D2CC9309F00D76DD3 /* Resources */,
@@ -405,6 +470,7 @@
 			mainGroup = D0EB3A262CC9309E00D76DD3;
 			packageReferences = (
 				D0855AD92CCCCE9A00F39D94 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D054BB402CD5E37F002B054D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = D0EB3A262CC9309E00D76DD3;
 			projectDirPath = "";
@@ -424,6 +490,7 @@
 			files = (
 				D0EB3A3C2CC9309F00D76DD3 /* Assets.xcassets in Resources */,
 				D0EB3A3F2CC9309F00D76DD3 /* Base in Resources */,
+				D098620B2CD75D9800EA8B8A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,50 +511,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1AAC83FC74EB8FFF9622CDA2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HootMessengerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		931219692C90AF14F1BCA1B7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HootMessenger-HootMessengerUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C2CBDB62AA8185279C1EDCA3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +533,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F6A7508EE81D89F8C3C5BFA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HootMessenger/Pods-HootMessenger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HootMessenger/Pods-HootMessenger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HootMessenger/Pods-HootMessenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -518,16 +558,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B146872CC95906003D9711 /* LoginViewController.swift in Sources */,
+				D054BB2A2CD12A5B002B054D /* RegisterViewModel.swift in Sources */,
 				D0EB3A372CC9309E00D76DD3 /* ConversationsViewController.swift in Sources */,
 				D0B1468A2CC9591B003D9711 /* RegisterViewController.swift in Sources */,
+				D054BB3E2CD32257002B054D /* ViewControllerLayoutable.swift in Sources */,
 				D0B146902CC95953003D9711 /* VideoPlayerViewController.swift in Sources */,
 				D0EB3A332CC9309E00D76DD3 /* AppDelegate.swift in Sources */,
+				D05AD1A52CD905CB0075AA44 /* APIService.swift in Sources */,
 				D0EB3A6D2CC93D4200D76DD3 /* Coordinator.swift in Sources */,
+				D054BB392CD32257002B054D /* BaseViewController.swift in Sources */,
+				D05AD1A32CD7A8A70075AA44 /* ConversationsViewModel.swift in Sources */,
 				D04892A82CCCAC9100D7A12B /* NavigationCoordinating.swift in Sources */,
 				D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */,
 				D0B1468D2CC95938003D9711 /* PhotoViewerViewController.swift in Sources */,
+				D054BB3D2CD32257002B054D /* Layout.swift in Sources */,
+				D054BB3C2CD32257002B054D /* FillMainContentLayout.swift in Sources */,
+				D054BB3F2CD32257002B054D /* ViewControllerProtocol.swift in Sources */,
 				D0EB3A6B2CC93D1600D76DD3 /* Coordinating.swift in Sources */,
 				D0B146922CC95976003D9711 /* NewConversationViewController.swift in Sources */,
+				D05AD1A72CD907000075AA44 /* APIServicing.swift in Sources */,
+				D054BB2D2CD12B61002B054D /* ChatAppUser.swift in Sources */,
+				D054BB3A2CD32257002B054D /* FillMainContentViewController.swift in Sources */,
+				D054BB3B2CD32257002B054D /* BaseLayout.swift in Sources */,
 				D04892A32CCCA7C000D7A12B /* LoginViewModel.swift in Sources */,
 				D04892A62CCCAC8500D7A12B /* NavigationCoordinator.swift in Sources */,
 				D0EB3A352CC9309E00D76DD3 /* SceneDelegate.swift in Sources */,
@@ -705,6 +757,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HootMessenger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -731,6 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HootMessenger/Info.plist;
@@ -752,7 +806,6 @@
 		};
 		D0EB3A5D2CC9309F00D76DD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28225C0D404B781EEFA5EBB6 /* Pods-HootMessengerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -772,7 +825,6 @@
 		};
 		D0EB3A5E2CC9309F00D76DD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5480158BA6693E85533C3DB /* Pods-HootMessengerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -792,7 +844,6 @@
 		};
 		D0EB3A602CC9309F00D76DD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F271B2ABFADF3FCC43153E2C /* Pods-HootMessenger-HootMessengerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -810,7 +861,6 @@
 		};
 		D0EB3A612CC9309F00D76DD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD0E389561F21DB98251B52E /* Pods-HootMessenger-HootMessengerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -868,6 +918,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D054BB402CD5E37F002B054D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
 		D0855AD92CCCCE9A00F39D94 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -883,6 +941,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D0855AD92CCCCE9A00F39D94 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		D0FC6BDF2CD5E77B006204A5 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D054BB402CD5E37F002B054D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
