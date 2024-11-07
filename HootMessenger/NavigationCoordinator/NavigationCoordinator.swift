@@ -15,8 +15,8 @@ class NavigationCoordinator: NSObject, NavigationCoordinating {
     func start(animated: Bool) {
         let coordinator = Coordinator(navigationController: self)
         let service = APIService.shared
-        let viewModel = ConversationsViewModel(coordinator: coordinator, service: service)
-        let firstViewController = ConversationsViewController(viewModel: viewModel)
+        let viewModel = BaseTabBarViewModel(coordinator: coordinator, service: service)
+        let firstViewController = BaseTabBarController(viewModel: viewModel)
         self.firstViewController = firstViewController
         navigationController.pushViewController(firstViewController, animated: animated)
     }
