@@ -32,6 +32,7 @@ final class LoginViewModel {
         Task {
             do {
                 let result = try await service.signIn(withEmail: email, password: password)
+                NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
                 print("Logged in User: \(result.user)")
                 viewModelEvent.send(.loginSuccess)
             } catch {

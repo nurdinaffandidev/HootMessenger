@@ -26,6 +26,8 @@
 		D05AD1AA2CDBAE980075AA44 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1A92CDBAE980075AA44 /* BaseTabBarController.swift */; };
 		D05AD1AC2CDBAEB60075AA44 /* BaseTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1AB2CDBAEB60075AA44 /* BaseTabBarViewModel.swift */; };
 		D05AD1AE2CDBB0540075AA44 /* OverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1AD2CDBB0540075AA44 /* OverlayLabel.swift */; };
+		D05AD1B12CDC8D110075AA44 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */; };
+		D05AD1B32CDCC20C0075AA44 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */; };
 		D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0855ADA2CCCCE9A00F39D94 /* SnapKit */; };
 		D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0855ADC2CCCD11800F39D94 /* Extension++.swift */; };
 		D098620B2CD75D9800EA8B8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */; };
@@ -97,6 +99,8 @@
 		D05AD1A92CDBAE980075AA44 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		D05AD1AB2CDBAEB60075AA44 /* BaseTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewModel.swift; sourceTree = "<group>"; };
 		D05AD1AD2CDBB0540075AA44 /* OverlayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayLabel.swift; sourceTree = "<group>"; };
+		D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D0855AD12CCCCC6F00F39D94 /* HootMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HootMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD22CCCCC6F00F39D94 /* HootMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD32CCCCC6F00F39D94 /* HootMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +236,15 @@
 			path = BaseTabBar;
 			sourceTree = "<group>";
 		};
+		D05AD1AF2CDC8D060075AA44 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */,
+				D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		D0B146842CC958E2003D9711 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +353,7 @@
 		D0EB3A632CC9317A00D76DD3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D05AD1AF2CDC8D060075AA44 /* Profile */,
 				D05AD1A82CDBAE7F0075AA44 /* BaseTabBar */,
 				D0B1468E2CC9593F003D9711 /* VideoPlayer */,
 				D0B1468B2CC95922003D9711 /* PhotoViewer */,
@@ -586,6 +600,8 @@
 				D054BB392CD32257002B054D /* BaseViewController.swift in Sources */,
 				D05AD1A32CD7A8A70075AA44 /* ConversationsViewModel.swift in Sources */,
 				D05AD1AA2CDBAE980075AA44 /* BaseTabBarController.swift in Sources */,
+				D05AD1B32CDCC20C0075AA44 /* ProfileViewModel.swift in Sources */,
+				D05AD1B12CDC8D110075AA44 /* ProfileViewController.swift in Sources */,
 				D04892A82CCCAC9100D7A12B /* NavigationCoordinating.swift in Sources */,
 				D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */,
 				D0B1468D2CC95938003D9711 /* PhotoViewerViewController.swift in Sources */,

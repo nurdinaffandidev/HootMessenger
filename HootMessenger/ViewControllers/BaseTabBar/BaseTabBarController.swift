@@ -12,6 +12,7 @@ class BaseTabBarController: UITabBarController {
     private var viewModel: BaseTabBarViewModel
     private var uiEvents = PassthroughSubject<BaseTabBarViewModel.UIEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
+    private var loginObserver: NSObjectProtocol?
     
     init(viewModel: BaseTabBarViewModel) {
         self.viewModel = viewModel
@@ -30,7 +31,7 @@ class BaseTabBarController: UITabBarController {
                 guard let self = self else { return }
                 switch event {
                 case .validationSuccess:
-                    break
+                    self.hideOverlayView()
                 case .validationFail:
                     uiEvents.send(.presentLoginScreen)
                 }
@@ -39,6 +40,8 @@ class BaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        setupChildViewControllers()
         showOverlayView()
     }
     
@@ -82,6 +85,59 @@ class BaseTabBarController: UITabBarController {
         return view
     }()
     
+    // MARK: - Setup
+    func setup() {
+        tabBar.backgroundColor = .systemBackground
+        tabBar.tintColor = .systemTeal
+        loginObserver = NotificationCenter.default.addObserver(
+            forName: .didLoggedInNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else {
+                    return
+                }
+                self.uiEvents.send(.viewDidAppear)
+            }
+        )
+    }
+    
+    func setupChildViewControllers() {
+        let conversationsVc = ConversationsViewController(
+            viewModel: ConversationsViewModel(
+                coordinator: viewModel.coordinator,
+                service: APIService.shared
+            )
+        )
+        
+        let profileVc = ProfileViewController(
+            viewModel: ProfileViewModel(
+                coordinator: viewModel.coordinator,
+                service: APIService.shared
+            )
+        )
+        viewControllers = [conversationsVc, profileVc]
+        updateTabBarContent()
+    }
+    
+    func updateTabBarContent() {
+        viewControllers?.forEach { vc in
+            if vc is ConversationsViewController {
+                vc.tabBarItem = UITabBarItem(
+                    title: "Conversations",
+                    image: UIImage(systemName: "message.circle"),
+                    selectedImage: nil
+                )
+            } else if vc is ProfileViewController {
+                vc.tabBarItem = UITabBarItem(
+                    title: "Profile",
+                    image: UIImage(systemName: "person.circle"),
+                    selectedImage: nil
+                )
+            }
+        }
+    }
+    
     func showOverlayView() {
         overlayPage.addSubview(overlayImageView)
         overlayPage.addSubview(overlayPageTitle)
@@ -101,5 +157,9 @@ class BaseTabBarController: UITabBarController {
         overlayPage.snp.makeConstraints {
             $0.leading.top.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    func hideOverlayView() {
+        overlayPage.removeFromSuperview()
     }
 }

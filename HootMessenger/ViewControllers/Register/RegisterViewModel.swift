@@ -58,6 +58,7 @@ final class RegisterViewModel {
                     emailAddress: email
                 )
                 service.insertUser(with: chatUser)
+                NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
                 viewModelEvent.send(.registerSuccess)
             } catch let error {
                 print("Create User Error: \(String (describing: error))")

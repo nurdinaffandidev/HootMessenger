@@ -1,19 +1,19 @@
 //
-//  ConversationsViewController.swift
+//  ProfileViewController.swift
 //  HootMessenger
 //
-//  Created by nurdin affandi on 23/10/24.
+//  Created by nurdin affandi on 7/11/24.
 //
 
 import UIKit
 import Combine
 
-class ConversationsViewController: UIViewController {
-    private var viewModel: ConversationsViewModel
-    private var uiEvents = PassthroughSubject<ConversationsViewModel.UIEvent, Never>()
+class ProfileViewController: UIViewController {
+    private var viewModel: ProfileViewModel
+    private var uiEvents = PassthroughSubject<ProfileViewModel.UIEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
     
-    init(viewModel: ConversationsViewModel) {
+    init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         bind()
@@ -29,10 +29,8 @@ class ConversationsViewController: UIViewController {
             .sink { [weak self] event in
                 guard let self = self else { return }
                 switch event {
-                case .validationSuccess:
+                case .logoutDone:
                     break
-                case .validationFail:
-                    uiEvents.send(.presentLoginScreen)
                 }
             }.store(in: &cancellables)
     }
@@ -44,6 +42,7 @@ class ConversationsViewController: UIViewController {
     
     // MARK: - Setup
     func setup() {
-        view.backgroundColor = .link
+        view.backgroundColor = .systemGreen
     }
 }
+

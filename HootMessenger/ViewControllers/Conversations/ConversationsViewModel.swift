@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import FirebaseAuth
 
 class ConversationsViewModel {
     private let coordinator: Coordinating

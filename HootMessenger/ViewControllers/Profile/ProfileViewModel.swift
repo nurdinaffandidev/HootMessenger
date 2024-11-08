@@ -1,16 +1,15 @@
 //
-//  BaseTabBarViewModel.swift
+//  ProfileViewModel.swift
 //  HootMessenger
 //
-//  Created by nurdin affandi on 6/11/24.
+//  Created by nurdin affandi on 7/11/24.
 //
 
 import Foundation
 import Combine
-import FirebaseAuth
 
-class BaseTabBarViewModel {
-    let coordinator: Coordinating
+class ProfileViewModel {
+    private let coordinator: Coordinating
     private let service: APIServicing
     private var viewModelEvent = PassthroughSubject<ViewModelEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
@@ -24,41 +23,32 @@ class BaseTabBarViewModel {
         cancellables.forEach { $0.cancel() }
     }
     
-    // MARK: - Functions
-    func validateAuthorization() {
-        service.validateAuthorization() ?
-        viewModelEvent.send(.validationFail) :
-        viewModelEvent.send(.validationSuccess)
-    }
-    
     func presentLoginScreen() {
         coordinator.presentLoginScreen()
     }
 }
 
 // MARK: Event Handling
-extension BaseTabBarViewModel {
+extension ProfileViewModel {
     enum UIEvent {
-        case viewDidAppear
-        case presentLoginScreen
+        case viewDidLoad
+        case logout
     }
     
     enum ViewModelEvent {
-        case validationSuccess
-        case validationFail
+        case logoutDone
     }
     
     func bind(_ uiEvents: AnyPublisher<UIEvent, Never>) -> AnyPublisher<ViewModelEvent, Never> {
         uiEvents.sink { [weak self] event in
             guard let self = self else { return }
             switch event {
-            case .viewDidAppear:
-                self.validateAuthorization()
-            case .presentLoginScreen:
-                self.presentLoginScreen()
+            case .viewDidLoad:
+                break
+            case .logout:
+                break
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()
     }
 }
-
