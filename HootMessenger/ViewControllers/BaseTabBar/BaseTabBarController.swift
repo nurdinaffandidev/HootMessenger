@@ -12,7 +12,7 @@ class BaseTabBarController: UITabBarController {
     private var viewModel: BaseTabBarViewModel
     private var uiEvents = PassthroughSubject<BaseTabBarViewModel.UIEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
-    private var loginObserver: NSObjectProtocol?
+    private var loginObserver, logoutObserver: NSObjectProtocol?
     
     init(viewModel: BaseTabBarViewModel) {
         self.viewModel = viewModel
@@ -32,6 +32,7 @@ class BaseTabBarController: UITabBarController {
                 switch event {
                 case .validationSuccess:
                     self.hideOverlayView()
+                    self.selectedIndex = 0
                 case .validationFail:
                     uiEvents.send(.presentLoginScreen)
                 }
@@ -41,6 +42,7 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupObservers()
         setupChildViewControllers()
         showOverlayView()
     }
@@ -89,6 +91,9 @@ class BaseTabBarController: UITabBarController {
     func setup() {
         tabBar.backgroundColor = .systemBackground
         tabBar.tintColor = .systemTeal
+    }
+    
+    func setupObservers() {
         loginObserver = NotificationCenter.default.addObserver(
             forName: .didLoggedInNotification,
             object: nil,
@@ -100,6 +105,20 @@ class BaseTabBarController: UITabBarController {
                 self.uiEvents.send(.viewDidAppear)
             }
         )
+        
+        logoutObserver = NotificationCenter.default.addObserver(
+            forName: .didLoggedOutNotification,
+            object: nil,
+            queue: .main,
+            using: { [weak self] _ in
+                guard let self = self else {
+                    return
+                }
+                self.showOverlayView()
+                self.uiEvents.send(.viewDidAppear)
+            }
+        )
+
     }
     
     func setupChildViewControllers() {

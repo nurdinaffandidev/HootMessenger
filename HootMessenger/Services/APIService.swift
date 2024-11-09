@@ -25,6 +25,10 @@ class APIService: APIServicing {
         return response
     }
     
+    func logout() throws {
+        try firebaseAuth.signOut()
+    }
+    
     func validateAuthorization() -> Bool {
         return firebaseAuth.currentUser == nil
     }

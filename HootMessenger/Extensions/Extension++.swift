@@ -47,4 +47,6 @@ extension UIView {
 extension Notification.Name {
     /// Notificaiton  when user logs in
     static let didLoggedInNotification = Notification.Name("didLoggedInNotification")
+    /// Notificaiton  when user logs out
+    static let didLoggedOutNotification = Notification.Name("didLoggedOutNotification")
 }

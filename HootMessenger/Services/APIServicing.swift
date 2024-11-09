@@ -16,6 +16,7 @@ protocol APIServicing {
     // MARK: - Auth
     func createUser(withEmail email: String, password: String) async throws -> AuthDataResult
     func signIn(withEmail email: String, password: String) async throws -> AuthDataResult
+    func logout() throws
     func validateAuthorization() -> Bool
     // MARK: - Database
     func insertUser(with user: ChatAppUser)

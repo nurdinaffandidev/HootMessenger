@@ -7,11 +7,14 @@
 
 import UIKit
 import Combine
+import SnapKit
 
 class ProfileViewController: UIViewController {
     private var viewModel: ProfileViewModel
     private var uiEvents = PassthroughSubject<ProfileViewModel.UIEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
+    
+    var data = [ProfileTableViewCellModel]()
     
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
@@ -29,8 +32,10 @@ class ProfileViewController: UIViewController {
             .sink { [weak self] event in
                 guard let self = self else { return }
                 switch event {
-                case .logoutDone:
-                    break
+                case .logoutSuccess:
+                    NotificationCenter.default.post(name: .didLoggedOutNotification, object: nil)
+                case .logoutFail:
+                    break // TODO: alert
                 }
             }.store(in: &cancellables)
     }
@@ -38,11 +43,110 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        updateData()
     }
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(
+            ProfileTableViewCell.self,
+            forCellReuseIdentifier: ProfileTableViewCell.identifier
+        )
+       return tableView
+    }()
     
     // MARK: - Setup
     func setup() {
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .lightGray
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.leading.top.trailing.bottom.equalToSuperview()
+        }
     }
+    
+    func updateData() {
+        data.append(
+            ProfileTableViewCellModel(
+                viewModelType: .logout,
+                title: "Log Out",
+                handler: {
+                    [weak self] in
+                    guard let self = self else { return }
+                    let actionSheet = UIAlertController(
+                        title: "Logging Out?",
+                        message: "",
+                        preferredStyle: .actionSheet
+                    )
+                    actionSheet.addAction(
+                        UIAlertAction(
+                            title: "Log Out",
+                            style: .destructive,
+                            handler: { [weak self] _ in
+                                guard let self = self else { return }
+                                UserDefaults.standard.setValue(nil, forKey: "email")
+                                UserDefaults.standard.setValue(nil, forKey: "name")
+                                uiEvents.send(.logout)
+                            }
+                        )
+                    )
+                    actionSheet.addAction(
+                        UIAlertAction(
+                            title: "Cancel",
+                            style: .cancel,
+                            handler: nil
+                        )
+                    )
+                    self.present(actionSheet, animated: true)
+                }
+            )
+        )
+    }
+    
+    // MARK: - Functions
+
+}
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModel = data[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ProfileTableViewCell.identifier,
+            for: indexPath) as? ProfileTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.setUp(with: viewModel)
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        data[indexPath.row].handler?()
+    }
+    
+}
+
+class ProfileTableViewCell: UITableViewCell {
+
+    static let identifier = "ProfileTableViewCell"
+
+    public func setUp(with viewModel: ProfileTableViewCellModel) {
+        self.textLabel?.text = viewModel.title
+        switch viewModel.viewModelType {
+        case .info:
+            textLabel?.textAlignment = .left
+            selectionStyle = .none
+        case .logout:
+            textLabel?.textColor = .red
+            textLabel?.textAlignment = .center
+        }
+    }
+
 }
 

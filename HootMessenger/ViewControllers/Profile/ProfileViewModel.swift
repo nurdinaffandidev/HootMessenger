@@ -26,6 +26,16 @@ class ProfileViewModel {
     func presentLoginScreen() {
         coordinator.presentLoginScreen()
     }
+    
+    func logout() {
+        do {
+            try service.logout()
+            viewModelEvent.send(.logoutSuccess)
+        } catch {
+            print("Error logging out")
+            viewModelEvent.send(.logoutFail)
+        }
+    }
 }
 
 // MARK: Event Handling
@@ -36,7 +46,8 @@ extension ProfileViewModel {
     }
     
     enum ViewModelEvent {
-        case logoutDone
+        case logoutSuccess
+        case logoutFail
     }
     
     func bind(_ uiEvents: AnyPublisher<UIEvent, Never>) -> AnyPublisher<ViewModelEvent, Never> {
@@ -46,7 +57,7 @@ extension ProfileViewModel {
             case .viewDidLoad:
                 break
             case .logout:
-                break
+                self.logout()
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()

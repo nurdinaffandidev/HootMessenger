@@ -44,6 +44,6 @@ class ConversationsViewController: UIViewController {
     
     // MARK: - Setup
     func setup() {
-        view.backgroundColor = .link
+        view.backgroundColor = .systemTeal
     }
 }

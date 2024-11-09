@@ -28,6 +28,7 @@
 		D05AD1AE2CDBB0540075AA44 /* OverlayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1AD2CDBB0540075AA44 /* OverlayLabel.swift */; };
 		D05AD1B12CDC8D110075AA44 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */; };
 		D05AD1B32CDCC20C0075AA44 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */; };
+		D05AD1B52CDE78C20075AA44 /* ProfileTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */; };
 		D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0855ADA2CCCCE9A00F39D94 /* SnapKit */; };
 		D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0855ADC2CCCD11800F39D94 /* Extension++.swift */; };
 		D098620B2CD75D9800EA8B8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */; };
@@ -101,6 +102,7 @@
 		D05AD1AD2CDBB0540075AA44 /* OverlayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayLabel.swift; sourceTree = "<group>"; };
 		D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellModel.swift; sourceTree = "<group>"; };
 		D0855AD12CCCCC6F00F39D94 /* HootMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HootMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD22CCCCC6F00F39D94 /* HootMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD32CCCCC6F00F39D94 /* HootMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +243,7 @@
 			children = (
 				D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */,
 				D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */,
+				D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				D054BB3A2CD32257002B054D /* FillMainContentViewController.swift in Sources */,
 				D054BB3B2CD32257002B054D /* BaseLayout.swift in Sources */,
 				D05AD1AE2CDBB0540075AA44 /* OverlayLabel.swift in Sources */,
+				D05AD1B52CDE78C20075AA44 /* ProfileTableViewCellModel.swift in Sources */,
 				D04892A32CCCA7C000D7A12B /* LoginViewModel.swift in Sources */,
 				D04892A62CCCAC8500D7A12B /* NavigationCoordinator.swift in Sources */,
 				D0EB3A352CC9309E00D76DD3 /* SceneDelegate.swift in Sources */,
