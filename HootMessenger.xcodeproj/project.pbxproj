@@ -29,9 +29,9 @@
 		D05AD1B12CDC8D110075AA44 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */; };
 		D05AD1B32CDCC20C0075AA44 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */; };
 		D05AD1B52CDE78C20075AA44 /* ProfileTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */; };
+		D05AD1B92CE23FEF0075AA44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D05AD1B82CE23FEF0075AA44 /* GoogleService-Info.plist */; };
 		D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0855ADA2CCCCE9A00F39D94 /* SnapKit */; };
 		D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0855ADC2CCCD11800F39D94 /* Extension++.swift */; };
-		D098620B2CD75D9800EA8B8A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */; };
 		D0B146872CC95906003D9711 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146862CC95906003D9711 /* LoginViewController.swift */; };
 		D0B1468A2CC9591B003D9711 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146892CC9591B003D9711 /* RegisterViewController.swift */; };
 		D0B1468D2CC95938003D9711 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */; };
@@ -103,11 +103,11 @@
 		D05AD1B02CDC8D110075AA44 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellModel.swift; sourceTree = "<group>"; };
+		D05AD1B82CE23FEF0075AA44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0855AD12CCCCC6F00F39D94 /* HootMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HootMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD22CCCCC6F00F39D94 /* HootMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD32CCCCC6F00F39D94 /* HootMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855ADC2CCCD11800F39D94 /* Extension++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension++.swift"; sourceTree = "<group>"; };
-		D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0B146862CC95906003D9711 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0B146892CC9591B003D9711 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 		D0EB3A312CC9309E00D76DD3 /* HootMessenger */ = {
 			isa = PBXGroup;
 			children = (
-				D098620A2CD75D9800EA8B8A /* GoogleService-Info.plist */,
+				D05AD1B82CE23FEF0075AA44 /* GoogleService-Info.plist */,
 				D054BB2E2CD3220F002B054D /* Components */,
 				D054BB2B2CD12B2F002B054D /* Model */,
 				D04892A42CCCAC3200D7A12B /* NavigationCoordinator */,
@@ -523,8 +523,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EB3A3C2CC9309F00D76DD3 /* Assets.xcassets in Resources */,
+				D05AD1B92CE23FEF0075AA44 /* GoogleService-Info.plist in Resources */,
 				D0EB3A3F2CC9309F00D76DD3 /* Base in Resources */,
-				D098620B2CD75D9800EA8B8A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +800,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HootMessenger/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -828,6 +830,8 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HootMessenger/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

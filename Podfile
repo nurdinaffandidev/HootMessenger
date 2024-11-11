@@ -1,11 +1,15 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '17.5'
 
 target 'HootMessenger' do
   use_frameworks!
 
+#Firebase
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+
+# Google Sign In
+pod 'GoogleSignIn'
 
 end
