@@ -32,6 +32,7 @@
 		D05AD1B92CE23FEF0075AA44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D05AD1B82CE23FEF0075AA44 /* GoogleService-Info.plist */; };
 		D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0855ADA2CCCCE9A00F39D94 /* SnapKit */; };
 		D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0855ADC2CCCD11800F39D94 /* Extension++.swift */; };
+		D0AE48242CE387BB00E3D34F /* PageDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE48232CE387BB00E3D34F /* PageDivider.swift */; };
 		D0B146872CC95906003D9711 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146862CC95906003D9711 /* LoginViewController.swift */; };
 		D0B1468A2CC9591B003D9711 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146892CC9591B003D9711 /* RegisterViewController.swift */; };
 		D0B1468D2CC95938003D9711 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */; };
@@ -108,6 +109,7 @@
 		D0855AD22CCCCC6F00F39D94 /* HootMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD32CCCCC6F00F39D94 /* HootMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855ADC2CCCD11800F39D94 /* Extension++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension++.swift"; sourceTree = "<group>"; };
+		D0AE48232CE387BB00E3D34F /* PageDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDivider.swift; sourceTree = "<group>"; };
 		D0B146862CC95906003D9711 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0B146892CC9591B003D9711 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				D054BB382CD32257002B054D /* BaseViewController */,
 				D05AD1AD2CDBB0540075AA44 /* OverlayLabel.swift */,
+				D0AE48232CE387BB00E3D34F /* PageDivider.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				D0EB3A332CC9309E00D76DD3 /* AppDelegate.swift in Sources */,
 				D05AD1A52CD905CB0075AA44 /* APIService.swift in Sources */,
 				D0EB3A6D2CC93D4200D76DD3 /* Coordinator.swift in Sources */,
+				D0AE48242CE387BB00E3D34F /* PageDivider.swift in Sources */,
 				D054BB392CD32257002B054D /* BaseViewController.swift in Sources */,
 				D05AD1A32CD7A8A70075AA44 /* ConversationsViewModel.swift in Sources */,
 				D05AD1AA2CDBAE980075AA44 /* BaseTabBarController.swift in Sources */,

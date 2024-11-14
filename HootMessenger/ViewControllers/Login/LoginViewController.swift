@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Combine
 import SnapKit
+import GoogleSignIn
 
 final class LoginViewController: UIViewController {
     private var viewModel: LoginViewModel
@@ -41,6 +42,8 @@ final class LoginViewController: UIViewController {
                     uiEvents.send(.routeToConversationsScreen)
                 case .loginFail:
                     self.alertUserLoginError(message: "Error logging in")
+                case .googleSignInFail:
+                    self.alertUserLoginError(message: "Error signing in via Google")
                 }
             }.store(in: &cancellables)
     }
@@ -127,6 +130,28 @@ final class LoginViewController: UIViewController {
         field.delegate = self
         return field
     }()
+    
+    private lazy var divider: PageDivider = {
+        let view = PageDivider()
+        view.backgroundColor = .systemGray4
+        return view
+    }()
+    
+    private lazy var signInGoogleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.text = "Sign in with Google:"
+        label.font = UIFont(name: "TrebuchetMS", size: 14)
+        return label
+    }()
+    
+    private lazy var googleSignInButton: GIDSignInButton = {
+        let button = GIDSignInButton()
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.addTarget(self, action: #selector(didTapGoogleLogin), for: .touchUpInside)
+        return button
+    }()
 
     private lazy var loginButton: UIButton = {
         let button = UIButton()
@@ -167,7 +192,12 @@ final class LoginViewController: UIViewController {
         mainContentStackView.addArrangedSubview(emailField)
         mainContentStackView.setCustomSpacing(10, after: emailField)
         mainContentStackView.addArrangedSubview(passwordField)
-        mainContentStackView.setCustomSpacing(10, after: passwordField)
+        mainContentStackView.setCustomSpacing(20, after: passwordField)
+        mainContentStackView.addArrangedSubview(divider)
+        mainContentStackView.setCustomSpacing(20, after: divider)
+        mainContentStackView.addArrangedSubview(signInGoogleLabel)
+        mainContentStackView.setCustomSpacing(6, after: signInGoogleLabel)
+        mainContentStackView.addArrangedSubview(googleSignInButton)
         
         bottomContentStackView.addArrangedSubview(loginButton)
         bottomContentStackView.setCustomSpacing(8, after: loginButton)
@@ -216,6 +246,10 @@ final class LoginViewController: UIViewController {
                 return
         }
         uiEvents.send(.submitLoginDetails(email: email, password: password))
+    }
+    
+    @objc private func didTapGoogleLogin() {
+        uiEvents.send(.performGoogleSignIn(self))
     }
     
     // MARK: - Alerts

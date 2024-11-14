@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import Combine
 import SnapKit
-import FirebaseAuth
 
 final class RegisterViewController: FillMainContentViewController {
     private var viewModel: RegisterViewModel

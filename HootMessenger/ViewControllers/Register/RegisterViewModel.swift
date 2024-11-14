@@ -37,12 +37,10 @@ final class RegisterViewModel {
         _ userImage: UIImage
     ) {
         Task {
-            service.userExists(with: email) { exists in
-                guard !exists else {
-                    // user already exists
-                    self.viewModelEvent.send(.registerUserExists)
-                    return
-                }
+            let userExists = await service.userExists(with: email)
+            if userExists {
+                self.viewModelEvent.send(.registerUserExists)
+                return
             }
             
             do {
@@ -58,6 +56,8 @@ final class RegisterViewModel {
                     emailAddress: email
                 )
                 service.insertUser(with: chatUser)
+                //TODO: pending more info
+//                let insertUserResult = await service.insertUser(with: chatUser)
                 NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
                 viewModelEvent.send(.registerSuccess)
             } catch let error {
