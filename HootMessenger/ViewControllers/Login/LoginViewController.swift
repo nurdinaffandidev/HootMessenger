@@ -141,13 +141,14 @@ final class LoginViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.text = "Sign in with Google:"
+        label.text = "Sign in with.."
         label.font = UIFont(name: "TrebuchetMS", size: 14)
         return label
     }()
     
     private lazy var googleSignInButton: GIDSignInButton = {
         let button = GIDSignInButton()
+        button.style = .wide
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.addTarget(self, action: #selector(didTapGoogleLogin), for: .touchUpInside)
         return button
