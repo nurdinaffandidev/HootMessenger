@@ -46,6 +46,20 @@ class ProfileViewController: UIViewController {
         updateData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavBarTitle("Profile")
+    }
+    
+    func setupNavBarTitle(_ title: String) {
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        titleLabel.sizeToFit()
+        let titleView = UIBarButtonItem(customView: titleLabel)
+        self.navigationController?.viewControllers.first?.navigationItem.leftBarButtonItem = titleView
+    }
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +82,13 @@ class ProfileViewController: UIViewController {
     }
     
     func updateData() {
+        data.append(
+            ProfileTableViewCellModel(
+                viewModelType: .info,
+                title: "App Info",
+                handler: nil
+            )
+        )
         data.append(
             ProfileTableViewCellModel(
                 viewModelType: .logout,
@@ -141,10 +162,10 @@ class ProfileTableViewCell: UITableViewCell {
         switch viewModel.viewModelType {
         case .info:
             textLabel?.textAlignment = .left
-            selectionStyle = .none
         case .logout:
             textLabel?.textColor = .red
-            textLabel?.textAlignment = .center
+            textLabel?.font = .systemFont(ofSize: 17, weight: .medium)
+            textLabel?.textAlignment = .left
         }
     }
 

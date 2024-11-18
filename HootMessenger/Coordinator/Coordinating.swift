@@ -13,5 +13,6 @@ protocol Coordinating {
     func goToLoginScreen()
     func presentRegisterScreen()
     func goToConversationsScreen()
+    func goToChatScreen(coordinator: Coordinating)
     func dismissPresentedView()
 }

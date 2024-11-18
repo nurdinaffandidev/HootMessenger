@@ -10,7 +10,8 @@ import UIKit
 import Combine
 import SnapKit
 import GoogleSignIn
-
+import JGProgressHUD
+ 
 final class LoginViewController: UIViewController {
     private var viewModel: LoginViewModel
     private var uiEvents = PassthroughSubject<LoginViewModel.UIEvent, Never>()
@@ -39,14 +40,19 @@ final class LoginViewController: UIViewController {
                 guard let self = self else { return }
                 switch event {
                 case .loginSuccess:
+                    spinnerLoader.dismiss()
                     uiEvents.send(.routeToConversationsScreen)
                 case .loginFail:
+                    spinnerLoader.dismiss()
                     self.alertUserLoginError(message: "Error logging in")
                 case .googleSignInFail:
+                    spinnerLoader.dismiss()
                     self.alertUserLoginError(message: "Error signing in via Google")
                 }
             }.store(in: &cancellables)
     }
+    
+    private let spinnerLoader = JGProgressHUD(style: .dark)
     
     private lazy var mainContentStackView: UIStackView = {
         let view = UIStackView()
@@ -237,6 +243,7 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func didTapLogin() {
+        spinnerLoader.show(in: view)
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         guard let email = emailField.text, 
@@ -250,6 +257,7 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func didTapGoogleLogin() {
+        spinnerLoader.show(in: view)
         uiEvents.send(.performGoogleSignIn(self))
     }
     

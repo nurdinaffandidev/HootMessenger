@@ -31,8 +31,9 @@ class BaseTabBarController: UITabBarController {
                 guard let self = self else { return }
                 switch event {
                 case .validationSuccess:
-                    self.hideOverlayView()
+                    self.setupChildViewControllers()
                     self.selectedIndex = 0
+                    self.hideOverlayView()
                 case .validationFail:
                     uiEvents.send(.presentLoginScreen)
                 }
@@ -43,7 +44,6 @@ class BaseTabBarController: UITabBarController {
         super.viewDidLoad()
         setup()
         setupObservers()
-        setupChildViewControllers()
         showOverlayView()
     }
     

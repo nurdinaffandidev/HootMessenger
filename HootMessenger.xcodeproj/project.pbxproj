@@ -30,6 +30,8 @@
 		D05AD1B32CDCC20C0075AA44 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */; };
 		D05AD1B52CDE78C20075AA44 /* ProfileTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */; };
 		D05AD1B92CE23FEF0075AA44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D05AD1B82CE23FEF0075AA44 /* GoogleService-Info.plist */; };
+		D073F2A02CE8859100A461A6 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073F29F2CE8859100A461A6 /* ChatViewController.swift */; };
+		D073F2A22CE8859900A461A6 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073F2A12CE8859900A461A6 /* ChatViewModel.swift */; };
 		D0855ADB2CCCCE9A00F39D94 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0855ADA2CCCCE9A00F39D94 /* SnapKit */; };
 		D0855ADD2CCCD11800F39D94 /* Extension++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0855ADC2CCCD11800F39D94 /* Extension++.swift */; };
 		D0AE48242CE387BB00E3D34F /* PageDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE48232CE387BB00E3D34F /* PageDivider.swift */; };
@@ -105,6 +107,8 @@
 		D05AD1B22CDCC20C0075AA44 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D05AD1B42CDE78C20075AA44 /* ProfileTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellModel.swift; sourceTree = "<group>"; };
 		D05AD1B82CE23FEF0075AA44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D073F29F2CE8859100A461A6 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D073F2A12CE8859900A461A6 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		D0855AD12CCCCC6F00F39D94 /* HootMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HootMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD22CCCCC6F00F39D94 /* HootMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0855AD32CCCCC6F00F39D94 /* HootMessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HootMessengerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +255,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		D073F29E2CE8857C00A461A6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D073F29F2CE8859100A461A6 /* ChatViewController.swift */,
+				D073F2A12CE8859900A461A6 /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		D0B146842CC958E2003D9711 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +372,7 @@
 		D0EB3A632CC9317A00D76DD3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D073F29E2CE8857C00A461A6 /* Chat */,
 				D05AD1AF2CDC8D060075AA44 /* Profile */,
 				D05AD1A82CDBAE7F0075AA44 /* BaseTabBar */,
 				D0B1468E2CC9593F003D9711 /* VideoPlayer */,
@@ -602,6 +616,7 @@
 				D0B146902CC95953003D9711 /* VideoPlayerViewController.swift in Sources */,
 				D0EB3A332CC9309E00D76DD3 /* AppDelegate.swift in Sources */,
 				D05AD1A52CD905CB0075AA44 /* APIService.swift in Sources */,
+				D073F2A22CE8859900A461A6 /* ChatViewModel.swift in Sources */,
 				D0EB3A6D2CC93D4200D76DD3 /* Coordinator.swift in Sources */,
 				D0AE48242CE387BB00E3D34F /* PageDivider.swift in Sources */,
 				D054BB392CD32257002B054D /* BaseViewController.swift in Sources */,
@@ -622,6 +637,7 @@
 				D054BB3A2CD32257002B054D /* FillMainContentViewController.swift in Sources */,
 				D054BB3B2CD32257002B054D /* BaseLayout.swift in Sources */,
 				D05AD1AE2CDBB0540075AA44 /* OverlayLabel.swift in Sources */,
+				D073F2A02CE8859100A461A6 /* ChatViewController.swift in Sources */,
 				D05AD1B52CDE78C20075AA44 /* ProfileTableViewCellModel.swift in Sources */,
 				D04892A32CCCA7C000D7A12B /* LoginViewModel.swift in Sources */,
 				D04892A62CCCAC8500D7A12B /* NavigationCoordinator.swift in Sources */,

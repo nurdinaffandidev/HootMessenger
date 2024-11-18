@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Combine
 import SnapKit
+import JGProgressHUD
 
 final class RegisterViewController: FillMainContentViewController {
     private var viewModel: RegisterViewModel
@@ -32,11 +33,14 @@ final class RegisterViewController: FillMainContentViewController {
                 guard let self = self else { return }
                 switch event {
                 case .registerSuccess:
+                    spinnerLoader.dismiss()
                     uiEvents.send(.routeToConversationsScreen)
                 case .registerUserExists:
+                    spinnerLoader.dismiss()
                     self.alertUserRegisterError(message: "Looks like a user account for that email address already exists.")
                 case .registerFail:
-                    break
+                    spinnerLoader.dismiss()
+                    self.alertUserRegisterError(message: "Register user failed")
                 }
             }.store(in: &cancellables)
     }
@@ -53,6 +57,8 @@ final class RegisterViewController: FillMainContentViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.width / 2
     }
+    
+    private let spinnerLoader = JGProgressHUD(style: .dark)
     
     private lazy var topSpacer: UIView = {
         let view = UIView()
@@ -269,6 +275,7 @@ final class RegisterViewController: FillMainContentViewController {
     }
     
     @objc private func didTapSubmit() {
+        spinnerLoader.show(in: view)
         firstNameField.resignFirstResponder()
         lastNameField.resignFirstResponder()
         emailField.resignFirstResponder()
