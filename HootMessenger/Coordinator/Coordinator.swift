@@ -54,8 +54,8 @@ final class Coordinator: Coordinating {
         }
     }
     
-    func goToChatScreen(coordinator: Coordinating) {
-        let viewModel = ChatViewModel(coordinator: coordinator, service: service)
+    func goToChatScreen() {
+        let viewModel = ChatViewModel(coordinator: self, service: service)
         DispatchQueue.main.async {
             self.navigationCoordinator.pushViewController(to: ChatViewController(viewModel: viewModel), animated: true)
         }
