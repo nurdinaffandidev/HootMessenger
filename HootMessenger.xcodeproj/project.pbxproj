@@ -40,6 +40,7 @@
 		D0B1468D2CC95938003D9711 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */; };
 		D0B146902CC95953003D9711 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1468F2CC95953003D9711 /* VideoPlayerViewController.swift */; };
 		D0B146922CC95976003D9711 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B146912CC95976003D9711 /* NewConversationViewController.swift */; };
+		D0C913EF2CEC218100A4E0CE /* NewConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913EE2CEC218100A4E0CE /* NewConversationsViewModel.swift */; };
 		D0EB3A332CC9309E00D76DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A322CC9309E00D76DD3 /* AppDelegate.swift */; };
 		D0EB3A352CC9309E00D76DD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A342CC9309E00D76DD3 /* SceneDelegate.swift */; };
 		D0EB3A372CC9309E00D76DD3 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A362CC9309E00D76DD3 /* ConversationsViewController.swift */; };
@@ -119,6 +120,7 @@
 		D0B1468C2CC95938003D9711 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		D0B1468F2CC95953003D9711 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		D0B146912CC95976003D9711 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		D0C913EE2CEC218100A4E0CE /* NewConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsViewModel.swift; sourceTree = "<group>"; };
 		D0EB3A322CC9309E00D76DD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0EB3A342CC9309E00D76DD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D0EB3A362CC9309E00D76DD3 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
@@ -267,8 +269,8 @@
 		D0B146842CC958E2003D9711 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
+				D0C913ED2CEC216B00A4E0CE /* NewConversations */,
 				D0EB3A362CC9309E00D76DD3 /* ConversationsViewController.swift */,
-				D0B146912CC95976003D9711 /* NewConversationViewController.swift */,
 				D05AD1A22CD7A8A70075AA44 /* ConversationsViewModel.swift */,
 			);
 			path = Conversations;
@@ -306,6 +308,15 @@
 				D0B1468F2CC95953003D9711 /* VideoPlayerViewController.swift */,
 			);
 			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		D0C913ED2CEC216B00A4E0CE /* NewConversations */ = {
+			isa = PBXGroup;
+			children = (
+				D0B146912CC95976003D9711 /* NewConversationViewController.swift */,
+				D0C913EE2CEC218100A4E0CE /* NewConversationsViewModel.swift */,
+			);
+			path = NewConversations;
 			sourceTree = "<group>";
 		};
 		D0EB3A262CC9309E00D76DD3 = {
@@ -642,6 +653,7 @@
 				D04892A32CCCA7C000D7A12B /* LoginViewModel.swift in Sources */,
 				D04892A62CCCAC8500D7A12B /* NavigationCoordinator.swift in Sources */,
 				D0EB3A352CC9309E00D76DD3 /* SceneDelegate.swift in Sources */,
+				D0C913EF2CEC218100A4E0CE /* NewConversationsViewModel.swift in Sources */,
 				D05AD1AC2CDBAEB60075AA44 /* BaseTabBarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

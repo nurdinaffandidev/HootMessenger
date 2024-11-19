@@ -45,6 +45,7 @@ class ConversationsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBarTitle("Chats")
+        setupComposeChatButton()
     }
     
     func setupNavBarTitle(_ title: String) {
@@ -54,6 +55,22 @@ class ConversationsViewController: UIViewController {
         titleLabel.sizeToFit()
         let titleView = UIBarButtonItem(customView: titleLabel)
         self.navigationController?.viewControllers.first?.navigationItem.leftBarButtonItem = titleView
+    }
+    
+    func setupComposeChatButton() {
+        let composeChatButton = UIBarButtonItem(
+            barButtonSystemItem: .compose,
+            target: self,
+            action: #selector(didTapComposeButton)
+        )
+        self.navigationController?.viewControllers.first?.navigationItem.rightBarButtonItem = composeChatButton
+    }
+    
+    @objc func didTapComposeButton() {
+        let viewModel = NewConversationsViewModel(service: viewModel.service)
+        let viewController = NewConversationViewController(viewModel: viewModel)
+        let nav = UINavigationController(rootViewController: viewController)
+        self.present(nav, animated: true)
     }
     
     private lazy var tableView: UITableView = {

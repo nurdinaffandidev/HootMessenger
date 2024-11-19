@@ -1,21 +1,19 @@
 //
-//  ConversationsViewModel.swift
+//  NewConversationsViewModel.swift
 //  HootMessenger
 //
-//  Created by nurdin affandi on 3/11/24.
+//  Created by nurdin affandi on 19/11/24.
 //
 
 import Foundation
 import Combine
 
-class ConversationsViewModel {
-    private let coordinator: Coordinating
-    let service: APIServicing
+class NewConversationsViewModel {
+    private let service: APIServicing
     private var viewModelEvent = PassthroughSubject<ViewModelEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
     
-    init(coordinator: Coordinating, service: APIServicing) {
-        self.coordinator = coordinator
+    init(service: APIServicing) {
         self.service = service
     }
     
@@ -24,25 +22,18 @@ class ConversationsViewModel {
     }
     
     // MARK: - Functions
-    func fetchConversations() {
-        
-    }
     
-    func routeToChat() {
-        coordinator.goToChatScreen()
-     }
 }
 
 // MARK: Event Handling
-extension ConversationsViewModel {
+extension NewConversationsViewModel {
     enum UIEvent {
         case viewDidLoad
-        case routeToChat
     }
     
     enum ViewModelEvent {
-        case fetchConversationsSuccess
-        case fetchConversationsFail
+        case fetchUsersSuccess
+        case fetchUsersFail
     }
     
     func bind(_ uiEvents: AnyPublisher<UIEvent, Never>) -> AnyPublisher<ViewModelEvent, Never> {
@@ -50,9 +41,7 @@ extension ConversationsViewModel {
             guard let self = self else { return }
             switch event {
             case .viewDidLoad:
-                self.fetchConversations()
-            case .routeToChat:
-                self.routeToChat()
+                break
             }
         }.store(in: &cancellables)
         return viewModelEvent.eraseToAnyPublisher()
