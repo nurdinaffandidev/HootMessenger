@@ -89,8 +89,7 @@ class BaseTabBarController: UITabBarController {
     
     // MARK: - Setup
     func setup() {
-        tabBar.backgroundColor = .systemBackground
-        tabBar.tintColor = .systemTeal
+
     }
     
     func setupObservers() {
@@ -141,6 +140,7 @@ class BaseTabBarController: UITabBarController {
     
     func updateTabBarContent() {
         viewControllers?.forEach { vc in
+            updateTabBarDisplay(for: vc)
             if vc is ConversationsViewController {
                 vc.tabBarItem = UITabBarItem(
                     title: "Conversations",
@@ -155,6 +155,14 @@ class BaseTabBarController: UITabBarController {
                 )
             }
         }
+    }
+    
+    func updateTabBarDisplay(for vc: UIViewController) {
+        vc.tabBarController?.tabBar.isTranslucent = false
+        vc.tabBarController?.tabBar.backgroundColor = .systemTeal
+        vc.tabBarController?.tabBar.barTintColor = .systemTeal
+        vc.tabBarController?.tabBar.tintColor = .white
+        vc.tabBarController?.tabBar.unselectedItemTintColor = .systemGray4
     }
     
     func showOverlayView() {

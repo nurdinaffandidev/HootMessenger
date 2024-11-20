@@ -58,6 +58,7 @@ class ProfileViewController: UIViewController {
         titleLabel.sizeToFit()
         let titleView = UIBarButtonItem(customView: titleLabel)
         self.navigationController?.viewControllers.first?.navigationItem.leftBarButtonItem = titleView
+        self.navigationController?.viewControllers.first?.navigationItem.rightBarButtonItem = nil
     }
     
     private lazy var tableView: UITableView = {
