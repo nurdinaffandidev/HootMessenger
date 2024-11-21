@@ -50,3 +50,22 @@ extension Notification.Name {
     /// Notificaiton  when user logs out
     static let didLoggedOutNotification = Notification.Name("didLoggedOutNotification")
 }
+
+extension UIImage {
+    static func fromLayer(layer: CALayer) -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(size: layer.bounds.size)
+        return renderer.image { context in
+            layer.render(in: context.cgContext)
+        }
+    }
+}
+
+extension UINavigationController {
+    func resetToDefaultAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.compactScrollEdgeAppearance = appearance
+    }
+}
