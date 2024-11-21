@@ -44,26 +44,8 @@ class ConversationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavBarTitle("Chats")
+        setupNavBarTitle()
         setupComposeChatButton()
-    }
-    
-    func setupNavBarTitle(_ title: String) {
-        let titleLabel = UILabel()
-        titleLabel.text = title
-        titleLabel.font = .systemFont(ofSize: 30, weight: .bold)
-        titleLabel.sizeToFit()
-        let titleView = UIBarButtonItem(customView: titleLabel)
-        self.navigationController?.viewControllers.first?.navigationItem.leftBarButtonItem = titleView
-    }
-    
-    func setupComposeChatButton() {
-        let composeChatButton = UIBarButtonItem(
-            barButtonSystemItem: .compose,
-            target: self,
-            action: #selector(didTapComposeButton)
-        )
-        self.navigationController?.viewControllers.first?.navigationItem.rightBarButtonItem = composeChatButton
     }
     
     @objc func didTapComposeButton() {
@@ -96,7 +78,16 @@ class ConversationsViewController: UIViewController {
     func setup() {
         view.backgroundColor = .white
         view.addSubview(tableView)
-        tableView.frame = view.bounds
+        setupLayoutConstraints()
+    }
+    
+    func setupLayoutConstraints() {
+        let safeAreaLayout = view.safeAreaLayoutGuide
+        tableView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(safeAreaLayout.snp.top)
+            $0.bottom.equalTo(safeAreaLayout.snp.bottom)
+        }
     }
 }
 
@@ -115,6 +106,64 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         uiEvents.send(.routeToChat)
-        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.contentOffset.y > 0 ? updateNavigationBarOnScroll() : defaultNavigationBar()
+    }
+}
+
+// MARK: Navigation Bar
+extension ConversationsViewController {
+    func setupNavBarTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = "Chats"
+        titleLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        titleLabel.textColor = .systemTeal
+        titleLabel.sizeToFit()
+        let titleView = UIBarButtonItem(customView: titleLabel)
+        self.navigationController?.viewControllers.first?.navigationItem.leftBarButtonItem = titleView
+        self.navigationController?.viewControllers.first?.navigationItem.titleView = nil
+    }
+    
+    func setupComposeChatButton() {
+        let composeChatButton = UIBarButtonItem(
+            barButtonSystemItem: .compose,
+            target: self,
+            action: #selector(didTapComposeButton)
+        )
+        self.navigationController?.viewControllers.first?.navigationItem.rightBarButtonItem = composeChatButton
+        self.navigationController?.viewControllers.first?.navigationItem.rightBarButtonItem?.tintColor = .systemTeal
+    }
+    
+    func updateNavigationBarOnScroll() {
+        let gradient = CAGradientLayer()
+        gradient.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 103)
+        gradient.colors = [UIColor.white.cgColor, UIColor.systemTeal.cgColor]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.75)
+        gradient.endPoint = CGPoint(x: 0.5, y: 0.0)
+        let bgImage = UIImage.fromLayer(layer: gradient)
+        self.navigationController?.viewControllers.first?.navigationItem.leftBarButtonItem = nil
+        self.navigationController?.navigationBar.setBackgroundImage(bgImage, for: .default)
+        self.navigationController?.viewControllers.first?.navigationController?.navigationBar.tintColor = .systemTeal
+        setupCenterTitle()
+    }
+    
+    func setupCenterTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = "Chats"
+        titleLabel.font = .systemFont(ofSize: 21, weight: .bold)
+        titleLabel.sizeToFit()
+        titleLabel.textColor = .systemTeal
+        self.navigationController?.viewControllers.first?.navigationItem.titleView = titleLabel
+    }
+    
+    func defaultNavigationBar() {
+        self.navigationController?.viewControllers.first?.navigationController?.navigationBar.backgroundColor = .white
+        self.navigationController?.viewControllers.first?.navigationController?.navigationBar.tintColor = nil
+        self.navigationController?.viewControllers.first?.navigationItem.titleView = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.barTintColor = .white
+        setupNavBarTitle()
     }
 }
