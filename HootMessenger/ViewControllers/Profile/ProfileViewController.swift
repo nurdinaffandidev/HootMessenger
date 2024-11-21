@@ -131,13 +131,11 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return data.count
-        return 20
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let viewModel = data[indexPath.row]
-        let viewModel = data[0]
+        let viewModel = data[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ProfileTableViewCell.identifier,
             for: indexPath) as? ProfileTableViewCell else {
