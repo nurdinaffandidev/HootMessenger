@@ -16,6 +16,7 @@ class APIService: APIServicing {
     let database = Database.database(url: "https://hootmessenger-9fb48-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
     let firebaseAuth = FirebaseAuth.Auth.auth()
     let clientID = FirebaseApp.app()?.options.clientID
+    let storage = StorageManager()
     
     // MARK: - Auth
     func createUser(withEmail email: String, password: String) async throws -> AuthDataResult {
@@ -54,23 +55,27 @@ class APIService: APIServicing {
     }
     
     /// Inserts new user to database
-//    public func insertUser(with user: ChatAppUser) async -> Bool {
-//        let userData: [String: String] = [
-//            "first_name": user.firstName,
-//            "last_name": user.lastName
-//        ]
-//        
-//        let userInsertionSuccess = await withCheckedContinuation { continuation in
-//            database.child(user.safeEmail).setValue(userData) { error, _ in
-//                if let error = error {
-//                    print("Failed to write to database: \(error)")
-//                    continuation.resume(returning: false)
-//                } else {
-//                    continuation.resume(returning: true)
-//                }
-//            }
-//        }
-//        
+    public func insertUser(with user: ChatAppUser) async throws {
+        let userData: [String: String] = [
+            "first_name": user.firstName,
+            "last_name": user.lastName
+        ]
+        
+        let userInsertionSuccess = await withCheckedContinuation { continuation in
+            database.child(user.safeEmail).setValue(userData) { error, _ in
+                if let error = error {
+                    print("Failed to write to database: \(error)")
+                    continuation.resume(returning: false)
+                } else {
+                    continuation.resume(returning: true)
+                }
+            }
+        }
+        
+        guard userInsertionSuccess != false else {
+            throw DatabaseError.failedToInsert
+        }
+        
 //        guard userInsertionSuccess else {
 //            return false
 //        }
@@ -123,7 +128,7 @@ class APIService: APIServicing {
 //                }
 //            }
 //        }
-//    }
+    }
 
     //TODO: to delete eventually
     /// Inserts new user to database
@@ -133,8 +138,10 @@ class APIService: APIServicing {
             "last_name": user.lastName
         ])
     }
-    
-    // MARK: - Google Sign In
+}
+
+// MARK: - Google Sign In
+extension APIService {
     public func signInWithGoogle(presentOver viewController: UIViewController) async -> GIDGoogleUser? {
         guard let clientID = clientID else {
           fatalError("No client ID found in Firebase configuration")
@@ -174,7 +181,13 @@ class APIService: APIServicing {
     public func restorePreviousSignIn() {
 //        GIDSignIn.sharedInstance.restorePreviousSignIn(completion: <#T##((GIDGoogleUser?, (any Error)?) -> Void)?##((GIDGoogleUser?, (any Error)?) -> Void)?##(GIDGoogleUser?, (any Error)?) -> Void#>)
     }
-       
+}
+
+// MARK: Storage
+extension APIService {
+    public func stroageUploadProfilePicture(with data: Data, fileName: String) async throws {
+        return try await storage.uploadProfilePicture(with: data, fileName: fileName)
+    }
 }
 
 // MARK: - Utility
@@ -192,5 +205,9 @@ public enum APIError: Error {
     case createUserFail
     case genericError
     case authTokenError
+}
+
+public enum DatabaseError: Error {
+    case failedToInsert
 }
 

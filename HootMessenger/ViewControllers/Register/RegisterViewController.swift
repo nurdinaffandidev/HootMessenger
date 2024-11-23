@@ -82,6 +82,7 @@ final class RegisterViewController: FillMainContentViewController {
         imageView.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
         imageView.addGestureRecognizer(gesture)
+        imageView.accessibilityValue = "default"
         return imageView
     }()
     
@@ -197,6 +198,7 @@ final class RegisterViewController: FillMainContentViewController {
     
     // MARK: - Setup
     private func setup() {
+        print("registerImageView: \(String(describing: imageView.accessibilityValue))")
         view.backgroundColor = .white
         scrollView.isUserInteractionEnabled = true
         
@@ -280,6 +282,9 @@ final class RegisterViewController: FillMainContentViewController {
         lastNameField.resignFirstResponder()
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
+        if imageView.accessibilityValue == "default" {
+            imageView.image = UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysTemplate)
+        }
         guard let firstName = firstNameField.text,
               let lastName = lastNameField.text,
               let email = emailField.text,
@@ -380,6 +385,8 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             return
         }
         self.imageView.image = selectedImage
+        self.imageView.accessibilityValue = "updatedProfilePicture"
+        print("registerImageView: \(String(describing: imageView.accessibilityValue))")
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

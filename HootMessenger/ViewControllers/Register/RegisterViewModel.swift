@@ -55,15 +55,30 @@ final class RegisterViewModel {
                     lastName: lastName,
                     emailAddress: email
                 )
-                service.insertUser(with: chatUser)
-                //TODO: pending more info
-//                let insertUserResult = await service.insertUser(with: chatUser)
+                try await service.insertUser(with: chatUser)
                 NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
+                
+                let fileName = chatUser.profilePictureFileName
+                uploadProfilePicture(image: userImage, fileName: fileName)
+                
                 viewModelEvent.send(.registerSuccess)
             } catch let error {
                 print("Create User Error: \(String (describing: error))")
-                viewModelEvent.send(.registerFail)
+                if let _ = error as? StorageError {
+                    viewModelEvent.send(.registerSuccess)
+                } else {
+                    viewModelEvent.send(.registerFail)
+                }
             }
+        }
+    }
+    
+    func uploadProfilePicture(image: UIImage, fileName: String) {
+        Task {
+            guard let imageData = image.pngData() else {
+                throw StorageError.failedToUpload
+            }
+            try await service.stroageUploadProfilePicture(with: imageData, fileName: fileName)
         }
     }
     
