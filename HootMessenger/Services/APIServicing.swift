@@ -26,5 +26,8 @@ protocol APIServicing {
     // MARK: - Google Sign In
     func signInWithGoogle(presentOver viewController: UIViewController) async -> GIDGoogleUser?
     // MARK: - Storage
-    func stroageUploadProfilePicture(with data: Data, fileName: String) async throws
+    func storageUploadProfilePicture(with data: Data, fileName: String) async throws
+    func uploadProfilePictureGoogleSignIn(user: ChatAppUser, googleUser: GIDGoogleUser) async throws
+    func uploadDefaultImage(user: ChatAppUser) async throws
+    func retrieveImageData(url: URL) async throws -> Data
 }

@@ -76,9 +76,9 @@ final class RegisterViewModel {
     func uploadProfilePicture(image: UIImage, fileName: String) {
         Task {
             guard let imageData = image.pngData() else {
-                throw StorageError.failedToUpload
+                throw StorageError.failedToUploadProfileImage
             }
-            try await service.stroageUploadProfilePicture(with: imageData, fileName: fileName)
+            try await service.storageUploadProfilePicture(with: imageData, fileName: fileName)
         }
     }
     

@@ -28,12 +28,13 @@ final class StorageManager {
             print("download url returned: \(urlString)")
         } catch {
             print("Failed to upload data to Firebase or get download URL: \(error)")
-            throw StorageError.failedToUpload
+            throw StorageError.failedToUploadProfileImage
         }
     }
 }
 
 public enum StorageError: Error {
-    case failedToUpload
+    case failedToUploadProfileImage
     case failedToGetDownloadUrl
+    case failedToGetGoogleProfileImage
 }

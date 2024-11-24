@@ -69,32 +69,30 @@ final class LoginViewModel {
                     lastName: lastName,
                     emailAddress: email
                 )
-                service.insertUser(with: chatUser)
-                //TODO: pending more info
-//                await createUser(with: chatUser, and: googleUser)
+                do {
+                    try await service.insertUser(with: chatUser)
+                    try await service.uploadProfilePictureGoogleSignIn(
+                        user: chatUser,
+                        googleUser: googleUser
+                    )
+                } catch let error {
+                    if let storageError = error as? StorageError {
+                        switch storageError {
+                        case .failedToGetGoogleProfileImage:
+                            try await service.uploadDefaultImage(user: chatUser)
+                        default:
+                            break
+                        }
+                        NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
+                        viewModelEvent.send(.loginSuccess)
+                    } else {
+                        viewModelEvent.send(.loginFail)
+                    }
+                }
             }
             NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
             viewModelEvent.send(.loginSuccess)
         }
-    }
-    
-    func createUser(with chatUser: ChatAppUser, and googleUser: GIDGoogleUser) async {
-        //TODO: pending more info
-//        let result = await service.insertUser(with: chatUser)
-//        if result == true {
-//            if googleUser.profile?.hasImage == true {
-//                guard let url = googleUser.profile?.imageURL(withDimension: 200) else {
-//                    return
-//                }
-//                
-//                URLSession.shared.dataTask(with: url) { data, _, _ in
-//                    guard let data = data else { return }
-//                }
-//                
-//                let filename = chatUser.profilePictureFileName
-//                
-//            }
-//        }
     }
 }
 
