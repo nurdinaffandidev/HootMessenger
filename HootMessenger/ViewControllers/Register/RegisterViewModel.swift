@@ -59,7 +59,7 @@ final class RegisterViewModel {
                 NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
                 
                 let fileName = chatUser.profilePictureFileName
-                uploadProfilePicture(image: userImage, fileName: fileName)
+                try await service.uploadProfilePictureRegister(image: userImage, fileName: fileName)
                 
                 viewModelEvent.send(.registerSuccess)
             } catch let error {
@@ -70,15 +70,6 @@ final class RegisterViewModel {
                     viewModelEvent.send(.registerFail)
                 }
             }
-        }
-    }
-    
-    func uploadProfilePicture(image: UIImage, fileName: String) {
-        Task {
-            guard let imageData = image.pngData() else {
-                throw StorageError.failedToUploadProfileImage
-            }
-            try await service.storageUploadProfilePicture(with: imageData, fileName: fileName)
         }
     }
     

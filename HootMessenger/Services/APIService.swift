@@ -189,6 +189,13 @@ extension APIService {
         return try await storage.uploadProfilePicture(with: data, fileName: fileName)
     }
     
+    public func uploadProfilePictureRegister(image: UIImage, fileName: String) async throws {
+        guard let imageData = image.pngData() else {
+            throw StorageError.failedToUploadProfileImage
+        }
+        try await storageUploadProfilePicture(with: imageData, fileName: fileName)
+    }
+    
     public func uploadProfilePictureGoogleSignIn(user: ChatAppUser, googleUser: GIDGoogleUser) async throws {
         guard let profile = googleUser.profile, profile.hasImage else {
             throw StorageError.failedToGetGoogleProfileImage
