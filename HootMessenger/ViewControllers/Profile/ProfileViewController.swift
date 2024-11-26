@@ -108,6 +108,7 @@ class ProfileViewController: UIViewController {
                                 guard let self = self else { return }
                                 UserDefaults.standard.setValue(nil, forKey: "email")
                                 UserDefaults.standard.setValue(nil, forKey: "name")
+                                resetNavBarOnLogout()
                                 uiEvents.send(.logout)
                             }
                         )
@@ -151,8 +152,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.contentOffset.y > 0 ? updateNavigationBarOnScroll() : defaultNavigationBar()
-    }    
+        scrollView.contentOffset.y > 0 ? 
+        updateNavigationBarOnScroll() : 
+        CommonUtils.defaultNavigationBar(self, setupNavBarTitle())
+    }
 }
 
 class ProfileTableViewCell: UITableViewCell {
@@ -173,6 +176,7 @@ class ProfileTableViewCell: UITableViewCell {
 
 }
 
+// MARK: Navigation Bar
 extension ProfileViewController {
     func setupNavBarTitle() {
         let titleLabel = UILabel()
@@ -209,13 +213,12 @@ extension ProfileViewController {
         self.navigationController?.viewControllers.first?.navigationItem.titleView = titleLabel
     }
     
-    func defaultNavigationBar() {
-        self.navigationController?.viewControllers.first?.navigationController?.navigationBar.backgroundColor = .white
+    func resetNavBarOnLogout() {
+        self.navigationController?.viewControllers.first?.navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.viewControllers.first?.navigationController?.navigationBar.tintColor = nil
         self.navigationController?.viewControllers.first?.navigationItem.titleView = nil
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.barTintColor = .white
-        setupNavBarTitle()
+        self.navigationController?.navigationBar.barTintColor = .clear
     }
 }
 

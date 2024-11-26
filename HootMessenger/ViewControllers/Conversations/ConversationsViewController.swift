@@ -109,7 +109,9 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.contentOffset.y > 0 ? updateNavigationBarOnScroll() : defaultNavigationBar()
+        scrollView.contentOffset.y > 0 ? 
+        updateNavigationBarOnScroll() : 
+        CommonUtils.defaultNavigationBar(self, setupNavBarTitle())
     }
 }
 
