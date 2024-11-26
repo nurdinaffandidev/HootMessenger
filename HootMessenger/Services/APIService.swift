@@ -41,7 +41,7 @@ class APIService: APIServicing {
     // MARK: - Database
     /// Checks if user exists for given email
     public func userExists(with email: String) async -> Bool {
-        let safeEmail = APIService.safeEmail(emailAddress: email)
+        let safeEmail = CommonUtils.safeEmail(emailAddress: email)
         
         return await withCheckedContinuation { continuation in
             database.child(safeEmail).observeSingleEvent(of: .value) { snapshot in
@@ -235,15 +235,6 @@ extension APIService {
         } catch {
             throw StorageError.failedToGetGoogleProfileImage
         }
-    }
-}
-
-// MARK: - Utility
-extension APIService {
-    static func safeEmail(emailAddress: String) -> String {
-        var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        return safeEmail
     }
 }
 
