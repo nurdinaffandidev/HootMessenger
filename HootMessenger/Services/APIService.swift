@@ -14,9 +14,9 @@ import FirebaseCore
 class APIService: APIServicing {
     public static let shared = APIService()
     let database = Database.database(url: "https://hootmessenger-9fb48-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
-    let firebaseAuth = FirebaseAuth.Auth.auth()
-    let clientID = FirebaseApp.app()?.options.clientID
-    let storage = StorageManager()
+    internal let firebaseAuth = FirebaseAuth.Auth.auth()
+    private let clientID = FirebaseApp.app()?.options.clientID
+    private let storage = StorageManager()
     
     // MARK: - Auth
     func createUser(withEmail email: String, password: String) async throws -> AuthDataResult {
@@ -234,6 +234,15 @@ extension APIService {
             return data
         } catch {
             throw StorageError.failedToGetGoogleProfileImage
+        }
+    }
+    
+    func downloadUrl(path: String) async throws -> URL {
+        do {
+            let url = try await storage.downloadURL(for: path)
+            return url
+        } catch {
+            throw StorageError.failedToGetDownloadUrl
         }
     }
 }

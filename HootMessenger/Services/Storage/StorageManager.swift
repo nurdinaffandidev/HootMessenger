@@ -31,6 +31,20 @@ final class StorageManager {
             throw StorageError.failedToUploadProfileImage
         }
     }
+    
+    /// Retrieve URL of store profile picture
+    public func downloadURL(for path: String) async throws -> URL {
+        let reference = storage.child(path)
+        return try await withCheckedThrowingContinuation { continuation in
+            reference.downloadURL { url, error in
+                if let url = url {
+                    continuation.resume(returning: url)
+                } else {
+                    continuation.resume(throwing: error ?? StorageError.failedToGetDownloadUrl)
+                }
+            }
+        }
+    }
 }
 
 public enum StorageError: Error {

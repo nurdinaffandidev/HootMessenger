@@ -31,4 +31,5 @@ protocol APIServicing {
     func uploadProfilePictureGoogleSignIn(user: ChatAppUser, googleUser: GIDGoogleUser) async throws
     func uploadDefaultImage(user: ChatAppUser) async throws
     func retrieveImageData(url: URL) async throws -> Data
+    func downloadUrl(path: String) async throws -> URL
 }
