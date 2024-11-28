@@ -36,6 +36,21 @@ class ProfileViewModel {
             viewModelEvent.send(.logoutFail)
         }
     }
+    
+    func downloadProfilePicUrl() {
+        Task {
+            do {
+                guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
+                let safeEmail = CommonUtils.safeEmail(emailAddress: email)
+                let filename = safeEmail + "_profile_picture.png"
+                let path = "images/"+filename
+                let url = try await service.downloadUrl(path: path)
+                viewModelEvent.send(.downloadProfilePicUrlSuccess(url))
+            } catch {
+                viewModelEvent.send(.downloadProfilePicUrlFail)
+            }
+        }
+    }
 }
 
 // MARK: Event Handling
@@ -46,6 +61,8 @@ extension ProfileViewModel {
     }
     
     enum ViewModelEvent {
+        case downloadProfilePicUrlSuccess(_ url: URL)
+        case downloadProfilePicUrlFail
         case logoutSuccess
         case logoutFail
     }
@@ -55,7 +72,7 @@ extension ProfileViewModel {
             guard let self = self else { return }
             switch event {
             case .viewDidLoad:
-                break
+                self.downloadProfilePicUrl()
             case .logout:
                 self.logout()
             }

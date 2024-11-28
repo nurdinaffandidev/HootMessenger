@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import SnapKit
+import SDWebImage
 
 class ProfileViewController: UIViewController {
     private var viewModel: ProfileViewModel
@@ -32,6 +33,10 @@ class ProfileViewController: UIViewController {
             .sink { [weak self] event in
                 guard let self = self else { return }
                 switch event {
+                case .downloadProfilePicUrlSuccess(let url):
+                    self.updateProfileImage(path: url)
+                case .downloadProfilePicUrlFail:
+                    self.updateDefaultProfileImage()
                 case .logoutSuccess:
                     NotificationCenter.default.post(name: .didLoggedOutNotification, object: nil)
                 case .logoutFail:
@@ -42,8 +47,10 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        uiEvents.send(.viewDidLoad)
         setup()
         updateData()
+        setupLayoutConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,21 +70,77 @@ class ProfileViewController: UIViewController {
        return tableView
     }()
     
+    private lazy var profilePicImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .white
+        imageView.layer.borderColor = UIColor.systemTeal.cgColor
+        imageView.layer.borderWidth = 2
+        imageView.layer.masksToBounds = true
+        imageView.image = UIImage(
+            systemName: "person.circle"
+        )?.withRenderingMode(.alwaysTemplate)
+        imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        return imageView
+    }()
+    
+    private lazy var tableHeaderView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.alignment = .leading
+        view.backgroundColor = .lightGray
+        view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        return view
+    }()
+    
     // MARK: - Setup
     func setup() {
         view.backgroundColor = .white
         view.addSubview(tableView)
-//        tableView.frame = view.bounds
-        setupLayoutConstraints()
+        setupTableHeaderView()
+    }
+    
+    func setupTableHeaderView() {
+        tableHeaderView.addSubview(profilePicImageView)
+
+        tableHeaderView.layoutIfNeeded()
+        tableView.tableHeaderView = tableHeaderView
+        
+        tableHeaderView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        profilePicImageView.snp.makeConstraints {
+            $0.leading.equalTo(tableHeaderView.snp.leading).offset(16)
+            $0.top.equalTo(tableHeaderView.snp.top).offset(10)
+        }
+        
+        profilePicImageView.layoutIfNeeded()
+        profilePicImageView.layer.cornerRadius = profilePicImageView.width / 2
     }
     
     func setupLayoutConstraints() {
         let safeAreaLayout = view.safeAreaLayoutGuide
+        let margins = view.layoutMarginsGuide
         tableView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(safeAreaLayout.snp.top)
             $0.bottom.equalTo(safeAreaLayout.snp.bottom)
         }
+    }
+    
+    func updateProfileImage(path: URL) {
+        profilePicImageView.sd_setImage(with: path, completed: nil)
+    }
+    
+    func updateDefaultProfileImage() {
+        profilePicImageView.image = UIImage(
+            systemName: "person.circle"
+        )?.withRenderingMode(.alwaysTemplate)
     }
     
     func updateData() {
