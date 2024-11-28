@@ -36,6 +36,7 @@ final class LoginViewModel {
                 let result = try await service.signIn(withEmail: email, password: password)
                 NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
                 print("Logged in User: \(result.user)")
+                UserDefaults.standard.set(email, forKey: "email")
                 viewModelEvent.send(.loginSuccess)
             } catch {
                 viewModelEvent.send(.loginFail)
@@ -60,7 +61,9 @@ final class LoginViewModel {
             
             let lastName = googleUser.profile?.familyName ?? "google_no_last_name_found"
             UserDefaults.standard.set(email, forKey: "email")
-            UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+            UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "fullName")
+            UserDefaults.standard.set("\(firstName)", forKey: "firstName")
+            UserDefaults.standard.set("\(lastName)", forKey: "lastName")
             
             let userExists = await service.userExists(with: email)
             if !userExists {

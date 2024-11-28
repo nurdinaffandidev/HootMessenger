@@ -57,7 +57,10 @@ final class RegisterViewModel {
                 )
                 try await service.insertUser(with: chatUser)
                 NotificationCenter.default.post(name: .didLoggedInNotification, object: nil)
-                
+                UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "fullName")
+                UserDefaults.standard.set("\(firstName)", forKey: "firstName")
+                UserDefaults.standard.set("\(lastName)", forKey: "lastName")
                 let fileName = chatUser.profilePictureFileName
                 try await service.uploadProfilePictureRegister(image: userImage, fileName: fileName)
                 
