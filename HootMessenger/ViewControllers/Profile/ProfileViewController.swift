@@ -86,13 +86,20 @@ class ProfileViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "TrebuchetMS", size: 25)
+        label.textColor = .systemTeal
+        return label
+    }()
+    
     private lazy var tableHeaderView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.distribution = .fill
         view.alignment = .leading
-        view.backgroundColor = .lightGray
         view.heightAnchor.constraint(equalToConstant: 100).isActive = true
         return view
     }()
@@ -105,13 +112,16 @@ class ProfileViewController: UIViewController {
     }
     
     func setupTableHeaderView() {
-        tableHeaderView.addSubview(profilePicImageView)
+        tableHeaderView.addArrangedSubview(profilePicImageView)
+        tableHeaderView.setCustomSpacing(10, after: profilePicImageView)
+        tableHeaderView.addArrangedSubview(nameLabel)
 
         tableHeaderView.layoutIfNeeded()
         tableView.tableHeaderView = tableHeaderView
         
         tableHeaderView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalTo(view.snp.leading)
+            $0.trailing.equalTo(view.snp.trailing)
         }
         
         profilePicImageView.snp.makeConstraints {
@@ -119,8 +129,21 @@ class ProfileViewController: UIViewController {
             $0.top.equalTo(tableHeaderView.snp.top).offset(10)
         }
         
+        nameLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(40)
+            $0.trailing.equalToSuperview()
+        }
+        
         profilePicImageView.layoutIfNeeded()
         profilePicImageView.layer.cornerRadius = profilePicImageView.width / 2
+        
+        let fullName = UserDefaults.standard.string(forKey: "fullName")
+        if let fullName = fullName, !fullName.contains("google_no_last_name_found") {
+            nameLabel.text = fullName
+        } else {
+            nameLabel.text = UserDefaults.standard.string(forKey: "firstName")
+        }
+        
     }
     
     func setupLayoutConstraints() {
