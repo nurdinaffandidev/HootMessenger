@@ -101,6 +101,13 @@ class ProfileViewController: UIViewController {
         view.distribution = .fill
         view.alignment = .leading
         view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        view.layoutMargins = UIEdgeInsets(
+            top: 10,
+            left: 16,
+            bottom: 10,
+            right: 16
+        )
+        view.isLayoutMarginsRelativeArrangement = true
         return view
     }()
     
@@ -124,14 +131,8 @@ class ProfileViewController: UIViewController {
             $0.trailing.equalTo(view.snp.trailing)
         }
         
-        profilePicImageView.snp.makeConstraints {
-            $0.leading.equalTo(tableHeaderView.snp.leading).offset(16)
-            $0.top.equalTo(tableHeaderView.snp.top).offset(10)
-        }
-        
         nameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
-            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(30)
         }
         
         profilePicImageView.layoutIfNeeded()
