@@ -21,7 +21,6 @@ protocol APIServicing {
     func validateAuthorization() -> Bool
     // MARK: - Database
     func userExists(with email: String) async -> Bool
-//    func insertUser(with user: ChatAppUser)
     func insertUser(with user: ChatAppUser) async throws
     // MARK: - Google Sign In
     func signInWithGoogle(presentOver viewController: UIViewController) async -> GIDGoogleUser?

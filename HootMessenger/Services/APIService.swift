@@ -61,83 +61,67 @@ class APIService: APIServicing {
             "last_name": user.lastName
         ]
         
-        let userInsertionSuccess = await withCheckedContinuation { continuation in
+        let _ = await withCheckedContinuation { continuation in
             database.child(user.safeEmail).setValue(userData) { error, _ in
                 if let error = error {
                     print("Failed to write to database: \(error)")
-                    continuation.resume(returning: false)
+                    continuation.resume(returning: { throw DatabaseError.failedToInsert })
                 } else {
-                    continuation.resume(returning: true)
+                    continuation.resume(returning: {})
                 }
             }
         }
-        
-        guard userInsertionSuccess != false else {
-            throw DatabaseError.failedToInsert
-        }
-        
-//        guard userInsertionSuccess else {
-//            return false
-//        }
-//
-//        var usersCollection = await withCheckedContinuation { continuation in
-//            database.child("users").observeSingleEvent(of: .value) { snapshot, _  in
-//                if let usersCollection = snapshot.value as? [[String: String]] {
-//                    continuation.resume(returning: usersCollection)
-//                } else {
-//                    continuation.resume(returning: [[:]])
-//                }
-//            }
-//        }
-//
-//        if !usersCollection.isEmpty {
-//            // Append to existing users collection
-//            let newUser = [
-//                "name": "\(user.firstName) \(user.lastName)",
-//                "email": user.safeEmail
-//            ]
-//            usersCollection.append(newUser)
-//
-//            return await withCheckedContinuation { continuation in
-//                database.child("users").setValue(usersCollection) { error, _ in
-//                    if let error = error {
-//                        print("Failed to update users collection: \(error)")
-//                        continuation.resume(returning: false)
-//                    } else {
-//                        continuation.resume(returning: true)
-//                    }
-//                }
-//            }
-//        } else {
-//            // Create new users collection
-//            let newUserCollection: [[String: String]] = [
-//                [
-//                    "name": "\(user.firstName) \(user.lastName)",
-//                    "email": user.safeEmail
-//                ]
-//            ]
-//
-//            return await withCheckedContinuation { continuation in
-//                database.child("users").setValue(newUserCollection) { error, _ in
-//                    if let error = error {
-//                        print("Failed to create users collection: \(error)")
-//                        continuation.resume(returning: false)
-//                    } else {
-//                        continuation.resume(returning: true)
-//                    }
-//                }
-//            }
-//        }
-    }
 
-    //TODO: to delete eventually
-    /// Inserts new user to database
-    public func insertUser(with user: ChatAppUser) {
-        database.child(user.safeEmail).setValue([
-            "first_name": user.firstName,
-            "last_name": user.lastName
-        ])
+        var usersCollection = await withCheckedContinuation { continuation in
+            database.child("users").observeSingleEvent(of: .value) { snapshot, _  in
+                if let usersCollection = snapshot.value as? [[String: String]] {
+                    continuation.resume(returning: usersCollection)
+                } else {
+                    continuation.resume(returning: [[String: String]]())
+                }
+            }
+        }
+
+        if !usersCollection.isEmpty {
+            // Append to existing users collection
+            let newUser = [
+                "name": "\(user.firstName) \(user.lastName)",
+                "email": user.safeEmail
+            ]
+            usersCollection.append(newUser)
+
+            let _ = await withCheckedContinuation { continuation in
+                database.child("users").setValue(usersCollection) { error, _ in
+                    if let error = error {
+                        print("Failed to update users collection: \(error)")
+                        continuation.resume(returning: { throw DatabaseError.failedToUpdateUserCollection })
+                    } else {
+                        continuation.resume(returning: {})
+                    }
+                }
+            }
+        } else {
+            // Create new users collection
+            let newUserCollection: [[String: String]] = [
+                [
+                    "name": "\(user.firstName) \(user.lastName)",
+                    "email": user.safeEmail
+                ]
+            ]
+
+            let _ = await withCheckedContinuation { continuation in
+                database.child("users").setValue(newUserCollection) { error, _ in
+                    if let error = error {
+                        print("Failed to create users collection: \(error)")
+                        continuation.resume(returning: { throw DatabaseError.failedToCreateUserCollection })
+                    } else {
+                        continuation.resume(returning: {})
+                    }
+                }
+            }
+        }
     }
+    
 }
 
 // MARK: - Google Sign In
@@ -257,5 +241,7 @@ public enum APIError: Error {
 
 public enum DatabaseError: Error {
     case failedToInsert
+    case failedToUpdateUserCollection
+    case failedToCreateUserCollection
 }
 
