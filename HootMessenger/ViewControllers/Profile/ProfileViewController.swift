@@ -81,6 +81,7 @@ class ProfileViewController: UIViewController {
         imageView.image = UIImage(
             systemName: "person.circle"
         )?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .systemTeal
         imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         return imageView
@@ -158,6 +159,7 @@ class ProfileViewController: UIViewController {
     }
     
     func updateProfileImage(path: URL) {
+        profilePicImageView.tintColor = .clear
         profilePicImageView.sd_setImage(with: path, completed: nil)
     }
     
