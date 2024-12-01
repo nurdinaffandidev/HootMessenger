@@ -22,6 +22,7 @@ protocol APIServicing {
     // MARK: - Database
     func userExists(with email: String) async -> Bool
     func insertUser(with user: ChatAppUser) async throws
+    func getAllUsers() async throws -> [[String: String]]
     // MARK: - Google Sign In
     func signInWithGoogle(presentOver viewController: UIViewController) async -> GIDGoogleUser?
     // MARK: - Storage

@@ -122,6 +122,19 @@ class APIService: APIServicing {
         }
     }
     
+    /// Gets all users from database
+    public func getAllUsers() async throws -> [[String: String]] {
+        return try await withCheckedThrowingContinuation { continuation in
+            database.child("users").observeSingleEvent(of: .value) { snapshot in
+                if let value = snapshot.value as? [[String: String]] {
+                    continuation.resume(returning: value)
+                } else {
+                    continuation.resume(throwing: DatabaseError.failedToFetchUserCollection)
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - Google Sign In
@@ -243,5 +256,6 @@ public enum DatabaseError: Error {
     case failedToInsert
     case failedToUpdateUserCollection
     case failedToCreateUserCollection
+    case failedToFetchUserCollection
 }
 
