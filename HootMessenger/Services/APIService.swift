@@ -14,9 +14,9 @@ import FirebaseCore
 class APIService: APIServicing {
     public static let shared = APIService()
     let database = Database.database(url: "https://hootmessenger-9fb48-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
-    internal let firebaseAuth = FirebaseAuth.Auth.auth()
-    private let clientID = FirebaseApp.app()?.options.clientID
-    private let storage = StorageManager()
+    let firebaseAuth = FirebaseAuth.Auth.auth()
+    let clientID = FirebaseApp.app()?.options.clientID
+    let storage = StorageManager()
     
     // MARK: - Auth
     func createUser(withEmail email: String, password: String) async throws -> AuthDataResult {
@@ -38,7 +38,7 @@ class APIService: APIServicing {
         return firebaseAuth.currentUser == nil
     }
     
-    // MARK: - Database
+    // MARK: - Database (Account Mgmt)
     /// Checks if user exists for given email
     public func userExists(with email: String) async -> Bool {
         let safeEmail = CommonUtils.safeEmail(emailAddress: email)
@@ -135,113 +135,7 @@ class APIService: APIServicing {
         }
     }
     
-}
-
-// MARK: - Google Sign In
-extension APIService {
-    public func signInWithGoogle(presentOver viewController: UIViewController) async -> GIDGoogleUser? {
-        guard let clientID = clientID else {
-          fatalError("No client ID found in Firebase configuration")
-        }
-        let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-        
-        do {
-            let userAuthentication = try await GIDSignIn.sharedInstance.signIn(withPresenting: viewController)
-            
-            let user = userAuthentication.user
-            guard let idToken = user.idToken else {
-                return nil
-            }
-            let accessToken = user.accessToken
-            
-            let credential = GoogleAuthProvider.credential(
-                withIDToken: idToken.tokenString,
-                accessToken: accessToken.tokenString
-            )
-            
-            let result = try await Auth.auth().signIn(with: credential)
-            let firebaseUser = result.user
-            print("User \(firebaseUser.uid) signed in with email \(firebaseUser.email ?? "unknown")")
-            return user
-        }
-        catch let error {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
-    
-    public func logoutGoogleId() {
-        GIDSignIn.sharedInstance.signOut()
-    }
-    
-    public func restorePreviousSignIn() {
-//        GIDSignIn.sharedInstance.restorePreviousSignIn(completion: <#T##((GIDGoogleUser?, (any Error)?) -> Void)?##((GIDGoogleUser?, (any Error)?) -> Void)?##(GIDGoogleUser?, (any Error)?) -> Void#>)
-    }
-}
-
-// MARK: Storage
-extension APIService {
-    public func storageUploadProfilePicture(with data: Data, fileName: String) async throws {
-        return try await storage.uploadProfilePicture(with: data, fileName: fileName)
-    }
-    
-    public func uploadProfilePictureRegister(image: UIImage, fileName: String) async throws {
-        guard let imageData = image.pngData() else {
-            throw StorageError.failedToUploadProfileImage
-        }
-        try await storageUploadProfilePicture(with: imageData, fileName: fileName)
-    }
-    
-    public func uploadProfilePictureGoogleSignIn(user: ChatAppUser, googleUser: GIDGoogleUser) async throws {
-        guard let profile = googleUser.profile, profile.hasImage else {
-            throw StorageError.failedToGetGoogleProfileImage
-        }
-        
-        let profileImgUrl = profile.imageURL(withDimension: 200)
-        
-        guard let profileImgUrl = profileImgUrl else {
-            throw StorageError.failedToGetGoogleProfileImage
-        }
-        
-        let imageData = try await retrieveImageData(url: profileImgUrl)
-        let filename = user.profilePictureFileName
-        try await storageUploadProfilePicture(
-            with: imageData,
-            fileName: filename
-        )
-    }
-    
-    public func uploadDefaultImage(user: ChatAppUser) async throws {
-        let image = UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysTemplate)
-        guard let profileImage = image,
-              let imageData = profileImage.pngData() else {
-            throw StorageError.failedToUploadProfileImage
-        }
-        let fileName = user.profilePictureFileName
-        try await storageUploadProfilePicture(
-            with: imageData,
-            fileName: fileName
-        )
-    }
-    
-    public func retrieveImageData(url: URL) async throws -> Data {
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            return data
-        } catch {
-            throw StorageError.failedToGetGoogleProfileImage
-        }
-    }
-    
-    func downloadUrl(path: String) async throws -> URL {
-        do {
-            let url = try await storage.downloadURL(for: path)
-            return url
-        } catch {
-            throw StorageError.failedToGetDownloadUrl
-        }
-    }
+    // MARK: - Database (Convo)
 }
 
 // MARK: - Errors
