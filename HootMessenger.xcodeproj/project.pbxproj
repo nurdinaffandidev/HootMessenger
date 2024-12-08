@@ -45,6 +45,9 @@
 		D0C913F42CF599ED00A4E0CE /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913F32CF599ED00A4E0CE /* CommonUtils.swift */; };
 		D0C913F62D01DF9C00A4E0CE /* APIService+GoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913F52D01DF9C00A4E0CE /* APIService+GoogleSignIn.swift */; };
 		D0C913F82D01E00100A4E0CE /* APIService+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913F72D01E00100A4E0CE /* APIService+Storage.swift */; };
+		D0C913FA2D05A28300A4E0CE /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913F92D05A28300A4E0CE /* Conversation.swift */; };
+		D0C913FC2D05A2A000A4E0CE /* LatestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913FB2D05A2A000A4E0CE /* LatestMessage.swift */; };
+		D0C913FE2D05A2F600A4E0CE /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C913FD2D05A2F600A4E0CE /* SearchResult.swift */; };
 		D0EB3A332CC9309E00D76DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A322CC9309E00D76DD3 /* AppDelegate.swift */; };
 		D0EB3A352CC9309E00D76DD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A342CC9309E00D76DD3 /* SceneDelegate.swift */; };
 		D0EB3A372CC9309E00D76DD3 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB3A362CC9309E00D76DD3 /* ConversationsViewController.swift */; };
@@ -129,6 +132,9 @@
 		D0C913F32CF599ED00A4E0CE /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
 		D0C913F52D01DF9C00A4E0CE /* APIService+GoogleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+GoogleSignIn.swift"; sourceTree = "<group>"; };
 		D0C913F72D01E00100A4E0CE /* APIService+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Storage.swift"; sourceTree = "<group>"; };
+		D0C913F92D05A28300A4E0CE /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		D0C913FB2D05A2A000A4E0CE /* LatestMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMessage.swift; sourceTree = "<group>"; };
+		D0C913FD2D05A2F600A4E0CE /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		D0EB3A322CC9309E00D76DD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0EB3A342CC9309E00D76DD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D0EB3A362CC9309E00D76DD3 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				D054BB2C2CD12B61002B054D /* ChatAppUser.swift */,
+				D0C913F92D05A28300A4E0CE /* Conversation.swift */,
+				D0C913FB2D05A2A000A4E0CE /* LatestMessage.swift */,
+				D0C913FD2D05A2F600A4E0CE /* SearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -639,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C913FC2D05A2A000A4E0CE /* LatestMessage.swift in Sources */,
 				D0B146872CC95906003D9711 /* LoginViewController.swift in Sources */,
 				D054BB2A2CD12A5B002B054D /* RegisterViewModel.swift in Sources */,
 				D0EB3A372CC9309E00D76DD3 /* ConversationsViewController.swift in Sources */,
@@ -651,6 +661,7 @@
 				D073F2A22CE8859900A461A6 /* ChatViewModel.swift in Sources */,
 				D0C913F22CF0CAE800A4E0CE /* StorageManager.swift in Sources */,
 				D0EB3A6D2CC93D4200D76DD3 /* Coordinator.swift in Sources */,
+				D0C913FE2D05A2F600A4E0CE /* SearchResult.swift in Sources */,
 				D0AE48242CE387BB00E3D34F /* PageDivider.swift in Sources */,
 				D054BB392CD32257002B054D /* BaseViewController.swift in Sources */,
 				D0C913F82D01E00100A4E0CE /* APIService+Storage.swift in Sources */,
@@ -664,6 +675,7 @@
 				D054BB3D2CD32257002B054D /* Layout.swift in Sources */,
 				D054BB3C2CD32257002B054D /* FillMainContentLayout.swift in Sources */,
 				D054BB3F2CD32257002B054D /* ViewControllerProtocol.swift in Sources */,
+				D0C913FA2D05A28300A4E0CE /* Conversation.swift in Sources */,
 				D0EB3A6B2CC93D1600D76DD3 /* Coordinating.swift in Sources */,
 				D0B146922CC95976003D9711 /* NewConversationViewController.swift in Sources */,
 				D05AD1A72CD907000075AA44 /* APIServicing.swift in Sources */,
